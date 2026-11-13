@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwasthyaSetu AI - Smart Pregnancy Support</title>
+    <link rel="stylesheet" href="../assets/ai_features.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>SwasthyaSetu <span>AI</span></h1>
+        <p>Personalized Pregnancy Support</p>
+    </div>
+    <a href="maternalcare.html" class="back-link">← Dashboard</a>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <p class="eyebrow">YOUR MATERNAL HEALTH COMPANION</p>
+            <h2>Care that understands your journey.</h2>
+            <p>Nutrition guidance, vaccination tracking and AI-powered symptom information.</p>
+        </div>
+        <div class="welcome-icon">♡</div>
+    </section>
+
+    <nav class="tabs">
+        <button class="tab active" data-section="nutrition">Nutrition AI</button>
+        <button class="tab" data-section="symptoms">Symptom Checker</button>
+        <button class="tab" data-section="vaccines">Vaccination</button>
+        <button class="tab" data-section="history">My History</button>
+    </nav>
+
+    <!-- NUTRITION -->
+    <section id="nutrition" class="feature-section">
+        <div class="section-heading">
+            <p class="eyebrow">PERSONALIZED CARE</p>
+            <h2>Nutrition Assistant</h2>
+            <p>Get food and nutrition ideas based on your pregnancy details.</p>
+        </div>
+
+        <form id="nutritionForm" class="panel">
+            <div class="form-grid">
+                <div class="field">
+                    <label>Age</label>
+                    <input type="number" id="nutritionAge" min="18" max="60" placeholder="Your age">
+                </div>
+
+                <div class="field">
+                    <label>Pregnancy week</label>
+                    <input type="number" id="nutritionWeek" min="1" max="45" required placeholder="Example: 24">
+                </div>
+
+                <div class="field">
+                    <label>Diet preference</label>
+                    <select id="dietPreference">
+                        <option>Vegetarian</option>
+                        <option>Non-vegetarian</option>
+                        <option>Vegan</option>
+                        <option>Eggetarian</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Food allergies</label>
+                    <input type="text" id="foodAllergies" placeholder="Example: peanuts, milk, none">
+                </div>
+
+                <div class="field full">
+                    <label>Health conditions (if any)</label>
+                    <input type="text" id="healthConditions" placeholder="Example: diabetes, high BP, anaemia, none">
+                </div>
+            </div>
+
+            <button class="primary-btn" type="submit" id="nutritionButton">
+                Generate My Nutrition Plan
+            </button>
+        </form>
+
+        <div id="nutritionResult" class="result-box hidden" aria-live="polite"></div>
+    </section>
+
+    <!-- SYMPTOM CHECKER -->
+    <section id="symptoms" class="feature-section hidden">
+        <div class="section-heading">
+            <p class="eyebrow">GEMINI AI ASSISTANT</p>
+            <h2>How are you feeling today?</h2>
+            <p>Describe your symptoms in your own words.</p>
+        </div>
+
+        <form id="symptomForm" class="panel">
+            <div class="field">
+                <label>Pregnancy week (optional)</label>
+                <input type="number" id="symptomWeek" min="1" max="45" placeholder="Example: 24">
+            </div>
+
+            <div class="field">
+                <label>Known health conditions (optional)</label>
+                <input type="text" id="knownConditions" placeholder="Example: anaemia, diabetes">
+            </div>
+
+            <div class="field">
+                <label>Describe your symptoms</label>
+                <textarea id="symptomText" rows="5" required minlength="3" maxlength="2000"
+                    placeholder="Example: I am 24 weeks pregnant and experiencing headache and dizziness."></textarea>
+            </div>
+
+            <button class="primary-btn" type="submit" id="symptomButton">
+                Check My Symptoms
+            </button>
+
+            <p class="disclaimer">
+                This tool provides information, not a diagnosis. For severe symptoms or warning signs,
+                seek medical care immediately instead of waiting for an AI response.
+            </p>
+        </form>
+
+        <div id="symptomResult" class="result-box hidden" aria-live="polite"></div>
+    </section>
+
+    <!-- VACCINATION -->
+    <section id="vaccines" class="feature-section hidden">
+        <div class="section-heading">
+            <p class="eyebrow">IMMUNIZATION TRACKER</p>
+            <h2>Vaccination Records</h2>
+            <p>Save vaccine dates and track pending or completed doses.</p>
+        </div>
+
+        <div class="panel guidance-panel">
+            <h3>India – Pregnancy vaccination guidance</h3>
+            <p><strong>Td-1:</strong> As early as possible during pregnancy.</p>
+            <p><strong>Td-2:</strong> Four weeks after Td-1.</p>
+            <p><strong>Td-Booster:</strong> May apply based on previous pregnancy vaccination history.</p>
+            <p class="disclaimer">Confirm the applicable dose and date with your healthcare provider.</p>
+        </div>
+
+        <form id="vaccineForm" class="panel">
+            <h3>Add Vaccination Record</h3>
+
+            <div class="field">
+                <label>Vaccine name</label>
+                <input type="text" id="vaccineName" required placeholder="Example: Td-1">
+            </div>
+
+            <div class="form-grid">
+                <div class="field">
+                    <label>Due date</label>
+                    <input type="date" id="vaccineDueDate">
+                </div>
+
+                <div class="field">
+                    <label>Status</label>
+                    <select id="vaccineStatus">
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <label>Administered date (for completed vaccine)</label>
+                    <input type="date" id="administeredDate">
+                </div>
+
+                <div class="field full">
+                    <label>Notes</label>
+                    <input type="text" id="vaccineNotes" placeholder="Optional doctor notes">
+                </div>
+            </div>
+
+            <button class="primary-btn" type="submit" id="vaccineButton">
+                Save Vaccination
+            </button>
+        </form>
+
+        <div id="vaccineList" class="record-list"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="history" class="feature-section hidden">
+        <div class="section-heading">
+            <p class="eyebrow">YOUR SAVED RECORDS</p>
+            <h2>My Health History</h2>
+            <p>Review your previous AI conversations and health support records.</p>
+        </div>
+
+        <button class="primary-btn" id="refreshHistory" type="button">
+            Refresh History
+        </button>
+
+        <div id="historyList" class="record-list"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p>SwasthyaSetu AI · Supporting safer maternal health journeys</p>
+</footer>
+
+<script src="../assets/ai_features.js"></script>
+</body>
+</html>
