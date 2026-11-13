@@ -1,0 +1,653 @@
+
+/* HealthGuard Dashboard */
+
+.hg-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #17243a;
+}
+
+.hg-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.hg-sidebar {
+    width: 245px;
+    background: #101d35;
+    color: white;
+    padding: 25px 18px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.hg-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+}
+
+.hg-brand-icon {
+    background: #13b8a6;
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 23px;
+}
+
+.hg-brand h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.hg-brand small {
+    color: #a9b8cc;
+}
+
+.hg-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hg-nav a {
+    color: #c5d1e1;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.hg-nav a:hover,
+.hg-nav a.active {
+    background: #1c3452;
+    color: #35d5c2;
+}
+
+.hg-sidebar-note {
+    margin-top: auto;
+    background: #1c3452;
+    padding: 17px;
+    border-radius: 12px;
+}
+
+.hg-sidebar-note span {
+    font-size: 23px;
+    color: #35d5c2;
+}
+
+.hg-sidebar-note h3 {
+    font-size: 15px;
+}
+
+.hg-sidebar-note p {
+    color: #b9c8d9;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Main content */
+.hg-main {
+    flex: 1;
+    padding: 30px 4%;
+    min-width: 0;
+}
+
+.hg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.hg-eyebrow {
+    color: #0d9d90;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.hg-header h1 {
+    font-size: 27px;
+    margin: 8px 0;
+}
+
+.hg-subtitle,
+.hg-muted {
+    color: #78869a;
+    font-size: 14px;
+}
+
+.hg-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 12px 17px;
+    border-radius: 12px;
+}
+
+.hg-profile span {
+    font-size: 25px;
+}
+
+.hg-profile strong,
+.hg-profile small {
+    display: block;
+}
+
+.hg-profile small {
+    color: #78869a;
+    margin-top: 4px;
+}
+
+/* Welcome banner */
+.hg-welcome {
+    background: linear-gradient(115deg, #102b49, #087e83);
+    border-radius: 18px;
+    padding: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.hg-tag {
+    color: #70e5d6;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.hg-welcome h2 {
+    font-size: 27px;
+    margin: 13px 0;
+}
+
+.hg-welcome p {
+    color: #d4e6ec;
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+.hg-welcome-icon {
+    font-size: 75px;
+    padding: 20px;
+}
+
+.hg-primary-btn {
+    background: #18bba9;
+    color: #082b38;
+    border: none;
+    border-radius: 9px;
+    padding: 13px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.hg-primary-btn:hover {
+    background: #54ddc9;
+}
+
+/* Sections */
+.hg-section {
+    margin-bottom: 32px;
+}
+
+.hg-section-title {
+    font-size: 19px;
+    margin-bottom: 17px;
+}
+
+.hg-stats,
+.hg-insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.hg-stat-card,
+.hg-insight-card {
+    background: white;
+    padding: 21px;
+    border-radius: 13px;
+    border: 1px solid #e8edf3;
+}
+
+.hg-stat-icon {
+    font-size: 25px;
+}
+
+.hg-stat-card p {
+    color: #78869a;
+    font-size: 13px;
+}
+
+.hg-stat-card h3 {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.hg-stat-card small {
+    color: #8995a6;
+}
+
+/* Symptoms */
+.hg-symptoms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+}
+
+.hg-symptom {
+    background: white;
+    border: 1px solid #e5eaf0;
+    border-radius: 11px;
+    padding: 17px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #26364c;
+}
+
+.hg-symptom span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+.hg-symptom:hover,
+.hg-symptom.selected {
+    border-color: #12ad9d;
+    background: #e9fbf8;
+}
+
+.hg-small {
+    font-size: 12px;
+}
+
+/* Empty history */
+.hg-empty {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border: 1px solid #e8edf3;
+    border-radius: 13px;
+}
+
+.hg-empty span {
+    font-size: 35px;
+}
+
+.hg-empty h3 {
+    font-size: 16px;
+}
+
+.hg-empty p {
+    color: #78869a;
+    font-size: 13px;
+}
+
+/* Health tips */
+.hg-insight-card span {
+    font-size: 28px;
+}
+
+.hg-insight-card h3 {
+    font-size: 15px;
+}
+
+.hg-insight-card p {
+    color: #78869a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.hg-footer {
+    text-align: center;
+    color: #8995a6;
+    font-size: 12px;
+    padding: 20px 0;
+}
+
+/* Responsive layout */
+@media (max-width: 850px) {
+    .hg-sidebar {
+        width: 190px;
+    }
+
+    .hg-symptoms {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .hg-layout {
+        flex-direction: column;
+    }
+
+    .hg-sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .hg-brand {
+        margin-bottom: 15px;
+    }
+
+    .hg-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .hg-nav a {
+        white-space: nowrap;
+    }
+
+    .hg-sidebar-note {
+        display: none;
+    }
+
+    .hg-main {
+        padding: 20px 15px;
+    }
+
+    .hg-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hg-stats,
+    .hg-insights {
+        grid-template-columns: 1fr;
+    }
+
+    .hg-welcome {
+        padding: 22px;
+    }
+
+    .hg-welcome-icon {
+        display: none;
+    }
+
+    .hg-welcome h2 {
+        font-size: 22px;
+    }
+}
+
+
+/* HealthGuard Assessment Upgrades */
+
+.hg-symptom.selected {
+    background: #dff8f3;
+    border: 2px solid #12ad9d;
+    color: #087e83;
+    font-weight: bold;
+}
+
+.hg-selected-area {
+    display: none;
+    background: white;
+    border: 1px solid #dce8ee;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.hg-selected-area h3,
+.hg-form-card h3 {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.hg-selected-area span {
+    display: inline-block;
+    background: #e7f7f4;
+    color: #087e83;
+    padding: 7px 12px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 13px;
+}
+
+.hg-form-card {
+    background: white;
+    border: 1px solid #e5eaf0;
+    border-radius: 13px;
+    padding: 20px;
+    margin: 17px 0;
+}
+
+.hg-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    margin-top: 10px;
+    border: 1px solid #dce3ec;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: white;
+    color: #17243a;
+}
+
+.hg-input:focus {
+    outline: none;
+    border-color: #12ad9d;
+}
+
+.hg-textarea {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.hg-severity-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: #78869a;
+    font-size: 12px;
+    margin: 12px 0;
+}
+
+.hg-severity-labels strong {
+    font-size: 23px;
+    color: #087e83;
+}
+
+.hg-range {
+    width: 100%;
+    accent-color: #12ad9d;
+    cursor: pointer;
+}
+
+.hg-error {
+    color: #d62839;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.hg-summary {
+    background: #eaf8f5;
+    border: 1px solid #b7e8dc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.hg-summary p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.hg-secondary-btn {
+    border: 1px solid #0d9d90;
+    background: white;
+    color: #087e83;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* HealthGuard Smart Follow-up and Report */
+
+#hgFollowupSection {
+    margin-top: 20px;
+}
+
+.hg-question {
+    margin: 18px 0;
+}
+
+.hg-question label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.hg-question select,
+.hg-question input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce3ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: white;
+    font-size: 14px;
+}
+
+.hg-report {
+    background: white;
+    padding: 24px;
+    border: 1px solid #dce8ee;
+    border-radius: 14px;
+    margin-top: 25px;
+}
+
+.hg-report h2 {
+    color: #087e83;
+}
+
+.hg-report h3 {
+    font-size: 16px;
+    margin-top: 22px;
+}
+
+.hg-report p,
+.hg-report li {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.hg-report-warning {
+    background: #fff1e8;
+    border-left: 4px solid #e87936;
+    padding: 14px;
+    border-radius: 7px;
+    margin: 15px 0;
+}
+
+.hg-report-safe {
+    background: #e8f7f2;
+    border-left: 4px solid #159b78;
+    padding: 14px;
+    border-radius: 7px;
+    margin: 15px 0;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #hgReportSection,
+    #hgReportSection * {
+        visibility: visible;
+    }
+
+    #hgReportSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+    }
+
+    #hgDownloadBtn {
+        display: none;
+    }
+}
+
+
+/* Language Selection */
+#hgLanguage {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce3ec;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+/* Multilingual Language Selector */
+.hg-language-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+}
+
+.hg-language-box label {
+    font-weight: 600;
+}
+
+#hgLanguage {
+    padding: 10px 14px;
+    border: 1px solid #dce3ec;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Multilingual Website */
+.hg-language-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+}
+
+.hg-language-box label {
+    font-weight: 600;
+}
+
+#hgLanguage {
+    padding: 10px 14px;
+    border: 1px solid #dce3ec;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, "Noto Sans Devanagari", sans-serif;
+}

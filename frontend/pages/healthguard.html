@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGuard | SwasthyaSetu AI</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../script.js" defer></script>
+</head>
+<body class="hg-body">
+
+<div class="hg-language-box">
+    <label for="hgLanguage">Choose Language / भाषा चुनें:</label>
+    <select id="hgLanguage">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+    </select>
+</div>
+
+
+
+</div>
+
+
+    <div class="hg-layout">
+
+        <!-- Sidebar -->
+        <aside class="hg-sidebar">
+            <div class="hg-brand">
+                <span class="hg-brand-icon">✚</span>
+                <div>
+                    <h2>HealthGuard</h2>
+                    <small>SwasthyaSetu AI</small>
+                </div>
+            </div>
+
+            <nav class="hg-nav">
+                <a href="healthguard.html" class="active">⌂ Dashboard</a>
+                <a href="#screening">♡ Health Screening</a>
+                <a href="#history">◷ Screening History</a>
+                <a href="#insights">✧ Health Insights</a>
+            </nav>
+
+            <div class="hg-sidebar-note">
+                <span>✦</span>
+                <h3>Your health matters!</h3>
+                <p>Take a small step towards better health today.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="hg-main">
+
+            <header class="hg-header">
+                <div>
+                    <p class="hg-eyebrow">YOUR PERSONAL HEALTH SPACE</p>
+                    <h1>HealthGuard Dashboard</h1>
+                    <p class="hg-subtitle">
+                        Understand your symptoms and take informed health decisions.
+                    </p>
+                </div>
+                <div class="hg-profile">
+                    <span>👤</span>
+                    <div>
+                        <strong>Welcome!</strong>
+                        <small>Stay healthy, stay safe</small>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Welcome Banner -->
+            <section class="hg-welcome">
+                <div>
+                    <span class="hg-tag">YOUR HEALTH COMPANION</span>
+                    <h2>How are you feeling today?</h2>
+                    <p>
+                        Tell us what you're experiencing. HealthGuard will
+                        guide you through a simple health screening.
+                    </p>
+                    <button class="hg-primary-btn" id="startScreeningBtn">
+                        Start Health Screening →
+                    </button>
+                </div>
+                <div class="hg-welcome-icon">🩺</div>
+            </section>
+
+            <!-- Overview Cards -->
+            <section class="hg-section">
+                <h2 class="hg-section-title">Your Health Overview</h2>
+
+                <div class="hg-stats">
+                    <article class="hg-stat-card">
+                        <span class="hg-stat-icon">📋</span>
+                        <p>Total Screenings</p>
+                        <h3 id="totalScreenings">0</h3>
+                        <small>Completed assessments</small>
+                    </article>
+
+                    <article class="hg-stat-card">
+                        <span class="hg-stat-icon">📅</span>
+                        <p>Last Screening</p>
+                        <h3 id="lastScreening">Not yet</h3>
+                        <small>Your latest assessment</small>
+                    </article>
+
+                    <article class="hg-stat-card">
+                        <span class="hg-stat-icon">💚</span>
+                        <p>Health Profile</p>
+                        <h3>Get Started</h3>
+                        <small>Complete your first screening</small>
+                    </article>
+                </div>
+            </section>
+
+            
+<!-- Screening Section -->
+<section class="hg-section" id="screening">
+
+    <h2 class="hg-section-title">Health Symptom Assessment</h2>
+    <p class="hg-muted">Select the symptoms you are experiencing today.</p>
+
+    <div class="hg-symptoms">
+
+        <button type="button" class="hg-symptom" data-symptom="Fever">
+            <span>🌡️</span> Fever
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Headache">
+            <span>🤕</span> Headache
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Stomach Pain">
+            <span>🫄</span> Stomach Pain
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Cough">
+            <span>😷</span> Cough
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Body Pain">
+            <span>🦴</span> Body Pain
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Fatigue">
+            <span>😴</span> Fatigue
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Chest Pain">
+            <span>❤️</span> Chest Pain
+        </button>
+
+        <button type="button" class="hg-symptom" data-symptom="Breathing Difficulty">
+            <span>🫁</span> Breathing Difficulty
+        </button>
+
+    </div>
+
+    <!-- Selected Symptoms -->
+    <div id="hgSelectedArea" class="hg-selected-area">
+        <h3>Your Selected Symptoms</h3>
+        <div id="hgSelectedList"></div>
+    </div>
+
+    <!-- Duration -->
+    <div class="hg-form-card">
+        <h3>How long have you been experiencing these symptoms?</h3>
+
+        <select id="hgDuration" class="hg-input">
+            <option value="">Select duration</option>
+            <option value="Just started">Just started</option>
+            <option value="A few hours">A few hours</option>
+            <option value="1–2 days">1–2 days</option>
+            <option value="3–7 days">3–7 days</option>
+            <option value="More than a week">More than a week</option>
+            <option value="More than a month">More than a month</option>
+        </select>
+    </div>
+
+    <!-- Severity -->
+    <div class="hg-form-card">
+        <h3>How severe are your symptoms?</h3>
+        <p class="hg-muted">Choose a level from 0 to 10.</p>
+
+        <div class="hg-severity-labels">
+            <span>0 - No discomfort</span>
+            <strong id="hgSeverityValue">5</strong>
+            <span>10 - Worst imaginable</span>
+        </div>
+
+        <input type="range" id="hgSeverity"
+               min="0" max="10" value="5"
+               class="hg-range">
+
+        <div class="hg-severity-labels">
+            <span>Mild</span>
+            <span>Moderate</span>
+            <span>Severe</span>
+        </div>
+    </div>
+    
+<!-- Language Selection -->
+<div class="hg-form-card">
+    <h3>Choose Your Language / भाषा चुनें</h3>
+
+    <select id="hgLanguage" class="hg-input">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+    </select>
+</div>
+
+   
+    <!-- Custom Symptoms -->
+    <div class="hg-form-card">
+        <h3>Any other symptoms?</h3>
+        <p class="hg-muted">
+            Describe anything else you are experiencing.
+        </p>
+
+        <textarea
+            id="hgCustomSymptoms"
+            class="hg-input hg-textarea"
+            rows="4"
+            placeholder="Example: I am also feeling nausea, loss of appetite or stomach discomfort..."
+        ></textarea>
+
+    </div>
+
+    
+<!-- Dynamic Follow-up Questions -->
+<div class="hg-form-card" id="hgFollowupSection" hidden>
+    <h3>Tell us more about your symptoms</h3>
+    <p class="hg-muted">
+        Please answer these questions to help us understand your symptoms better.
+    </p>
+    <div id="hgFollowupQuestions"></div>
+</div>
+
+<!-- Analyze Report Button -->
+<button type="button" id="hgAnalyzeBtn" class="hg-primary-btn">
+    Analyze My Report →
+</button>
+
+<p id="hgError" class="hg-error"></p>
+
+<!-- Generated Report -->
+<section id="hgReportSection" class="hg-report" hidden>
+    <h2>HealthGuard Screening Report</h2>
+    <div id="hgReportContent"></div>
+    <button type="button" id="hgDownloadBtn" class="hg-primary-btn">
+        Print / Save as PDF
+    </button>
+</section>
+
+
+    <div id="hgAssessmentSummary" class="hg-summary" hidden>
+        <h3>Assessment Details</h3>
+        <div id="hgSummaryContent"></div>
+        <button type="button" id="hgEditBtn" class="hg-secondary-btn">
+            Edit Answers
+        </button>
+    </div>
+
+</section>
+
+
+            <!-- History -->
+            <section class="hg-section" id="history">
+                <h2 class="hg-section-title">Recent Screening History</h2>
+                <div class="hg-empty">
+                    <span>📂</span>
+                    <h3>No screening history yet</h3>
+                    <p>Your completed health assessments will appear here.</p>
+                </div>
+            </section>
+
+            <!-- Insights -->
+            <section class="hg-section" id="insights">
+                <h2 class="hg-section-title">Health Awareness</h2>
+                <div class="hg-insights">
+                    <article class="hg-insight-card">
+                        <span>💧</span>
+                        <h3>Stay Hydrated</h3>
+                        <p>Drink enough water throughout the day.</p>
+                    </article>
+                    <article class="hg-insight-card">
+                        <span>🥗</span>
+                        <h3>Eat Balanced Meals</h3>
+                        <p>Include a variety of nutritious foods in your diet.</p>
+                    </article>
+                    <article class="hg-insight-card">
+                        <span>🚶</span>
+                        <h3>Stay Active</h3>
+                        <p>Include regular physical activity in your routine.</p>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="hg-footer">
+                HealthGuard is an informational screening tool, not a substitute
+                for professional medical advice or diagnosis.
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
