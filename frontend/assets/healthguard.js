@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const symptomButtons = document.querySelectorAll(".hg-symptom");
