@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediReach | SwasthyaSetu AI – Demo</title>
+  <meta name="description" content="Frontend demonstration only. Sample facilities, doctors and requests. Not connected to real hospitals.">
+  <link rel="stylesheet" href="../medireach.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- Persistent emergency notice -->
+<div class="top-emergency" role="alert">
+  <strong data-i18n="emergencyBannerTitle">EMERGENCY</strong>
+  <span data-i18n="emergencyBannerText">This is a demonstration app only. It cannot dispatch ambulances or confirm real appointments. For medical emergencies in India call</span>
+  <a href="tel:112">112</a>.
+</div>
+
+<header class="navbar">
+  <a class="logo" href="#">✚ SwasthyaSetu AI</a>
+  <nav aria-label="Main">
+    <a href="#facilities" data-i18n="navFacilities">Facilities</a>
+    <a href="#doctors" data-i18n="navDoctors">Doctors</a>
+    <a href="#request" data-i18n="navRequest">Request</a>
+    <a href="#beds" data-i18n="navBeds">Beds &amp; Ambulance</a>
+    <a href="#tracking" data-i18n="navTracking">Tracking</a>
+    <a href="#admin" data-i18n="navAdmin">Admin</a>
+    <button id="navHelperBtn" class="language-btn" type="button" data-i18n="navHelper">Section helper</button>
+    <button id="languageToggle" class="language-btn" type="button">हिन्दी</button>
+  </nav>
+</header>
+
+<!-- Section navigation helper -->
+<section id="navHelperPanel" class="nav-helper-panel hidden" aria-labelledby="navHelperTitle">
+  <h2 id="navHelperTitle" data-i18n="navHelperTitle">Site section helper</h2>
+  <p data-i18n="navHelperDesc">This tool only jumps to sections of this demo page. It does not give medical advice.</p>
+  <div class="helper-buttons">
+    <button type="button" class="primary-btn jump-btn" data-target="facilities" data-i18n="navFacilities">Facilities</button>
+    <button type="button" class="primary-btn jump-btn" data-target="doctors" data-i18n="navDoctors">Doctors</button>
+    <button type="button" class="primary-btn jump-btn" data-target="request" data-i18n="navRequest">Request</button>
+    <button type="button" class="primary-btn jump-btn" data-target="beds" data-i18n="navBeds">Beds &amp; Ambulance</button>
+    <button type="button" class="primary-btn jump-btn" data-target="tracking" data-i18n="navTracking">Tracking</button>
+    <button type="button" class="primary-btn jump-btn" data-target="admin" data-i18n="navAdmin">Admin</button>
+  </div>
+  <button type="button" id="closeHelper" class="language-btn" data-i18n="close">Close</button>
+</section>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="tag" data-i18n="heroTag">HEALTHCARE ACCESS MADE EASIER</p>
+    <h1 data-i18n="heroTitle">Find Healthcare.<br>Get Connected.</h1>
+    <p data-i18n="heroText">Discover nearby sample healthcare facilities, explore demo doctors and create demonstration requests through one platform.</p>
+    <a href="#facilities" class="primary-btn" data-i18n="findButton">Find a Hospital</a>
+  </div>
+  <div class="hero-card">
+    <div class="hero-icon">✚</div>
+    <h2 data-i18n="heroCardTitle">Your Health Matters</h2>
+    <p data-i18n="heroCardText">Find sample facilities, explore doctors and submit demo healthcare requests.</p>
+    <span class="demo-label" data-i18n="demoLabel">DEMO PLATFORM – SAMPLE DATA ONLY</span>
+  </div>
+</section>
+
+<section class="quick-stats">
+  <div><strong id="facilityCount">6</strong><span data-i18n="statFacilities">Demo Facilities</span></div>
+  <div><strong id="doctorCount">6</strong><span data-i18n="statDoctors">Demo Doctors</span></div>
+  <div><strong id="requestCount">0</strong><span data-i18n="statRequests">Requests Submitted</span></div>
+</section>
+
+<main id="main">
+
+  <!-- FACILITIES -->
+  <section id="facilities" class="section">
+    <div class="section-heading">
+      <p class="tag" data-i18n="facilityTag">HEALTHCARE DIRECTORY</p>
+      <h2 data-i18n="facilityTitle">Find Nearby Hospitals</h2>
+      <p data-i18n="facilityText">Search sample facilities or use your location to sort by estimated distance. All data is fictional.</p>
+    </div>
+
+    <div class="location-tools">
+      <button id="nearbyButton" class="primary-btn" type="button" data-i18n="nearbyButton">📍 Find Near Me</button>
+      <span id="locationMessage" role="status" data-i18n="locationDefault">Location has not been shared.</span>
+    </div>
+
+    <!-- Voice + text search -->
+    <div class="voice-search-bar">
+      <div class="search-with-voice">
+        <label class="visually-hidden" for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="Search hospital, area or speciality... or click the mic" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+        <button id="voiceSearchBtn" class="voice-btn" type="button" title="Voice Search" aria-label="Start voice search">
+          <span class="mic-icon">🎙️</span>
+        </button>
+      </div>
+      <div id="voiceStatus" class="voice-status" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="filters">
+      <label class="visually-hidden" for="typeFilter">Type</label>
+      <select id="typeFilter">
+        <option value="" data-i18n="allTypes">All facility types</option>
+        <option value="Hospital">Hospital</option>
+        <option value="Clinic">Clinic</option>
+        <option value="Health Centre">Health Centre</option>
+      </select>
+      <label class="visually-hidden" for="specialtyFilter">Speciality</label>
+      <select id="specialtyFilter">
+        <option value="" data-i18n="allSpecialties">All specialities</option>
+        <option>General Medicine</option>
+        <option>Cardiology</option>
+        <option>Gynecology</option>
+        <option>Pediatrics</option>
+        <option>Orthopedics</option>
+      </select>
+    </div>
+
+    <div class="facility-layout">
+      <div id="facilityList" class="facility-list" aria-live="polite"></div>
+      <div class="map-wrap">
+        <div id="map" role="img" aria-label="Map of sample facilities"></div>
+        <div id="mapFallback" class="map-fallback hidden">
+          <p data-i18n="mapFallback">Map could not be loaded. Facility addresses are still shown in the list and details.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="facilityDetails" class="details">
+      <p data-i18n="selectFacility">Select a facility to view details.</p>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section id="doctors" class="section alternate">
+    <div class="section-heading">
+      <p class="tag" data-i18n="doctorTag">CONSULTATION SUPPORT</p>
+      <h2 data-i18n="doctorTitle">Find a Doctor</h2>
+      <p data-i18n="doctorText">Explore sample doctor profiles, filter by speciality or max fee, and select available demo slots.</p>
+    </div>
+
+    <div class="doctor-filter">
+      <label for="doctorSpecialtyFilter" class="visually-hidden">Speciality</label>
+      <select id="doctorSpecialtyFilter">
+        <option value="" data-i18n="allDoctors">All specialities</option>
+        <option>General Medicine</option>
+        <option>Cardiology</option>
+        <option>Gynecology</option>
+        <option>Pediatrics</option>
+        <option>Orthopedics</option>
+      </select>
+      <label for="feeMax" class="visually-hidden">Max fee</label>
+      <input id="feeMax" type="number" min="0" step="100" placeholder="Max fee ₹ (optional)" data-i18n-placeholder="maxFeePlaceholder">
+      <button type="button" id="filterDoctorsBtn" class="primary-btn" data-i18n="filterDoctors">Filter</button>
+    </div>
+
+    <div id="doctorList" class="doctor-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- REQUEST FORM -->
+  <section id="request" class="section">
+    <div class="section-heading">
+      <p class="tag" data-i18n="requestTag">PATIENT SUPPORT</p>
+      <h2 data-i18n="requestTitle">Request an Appointment or Referral</h2>
+      <p data-i18n="requestText">Enter fictional details only. Nothing is sent to a server. Data stays in this browser session.</p>
+    </div>
+
+    <form id="requestForm" class="request-form" novalidate>
+      <div class="form-grid">
+        <label>
+          <span data-i18n="patientLabel">Patient Name (fictional)</span>
+          <input id="patientName" name="patientName" required maxlength="80" autocomplete="off" placeholder="Enter fictional name">
+          <span class="field-error" id="err-name" role="alert"></span>
+        </label>
+
+        <label>
+          <span data-i18n="phoneLabel">Phone Number (fictional)</span>
+          <input id="phone" name="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" autocomplete="off">
+          <span class="field-error" id="err-phone" role="alert"></span>
+        </label>
+
+        <label>
+          <span data-i18n="ageLabel">Age</span>
+          <input id="age" name="age" type="number" min="1" max="120" required>
+        </label>
+
+        <label>
+          <span data-i18n="genderLabel">Gender</span>
+          <select id="gender" name="gender" required>
+            <option value="" data-i18n="selectGender">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          <span data-i18n="requestTypeLabel">Request Type</span>
+          <select id="requestType" name="requestType" required>
+            <option value="Consultation" data-i18n="consultationOption">Consultation</option>
+            <option value="Referral" data-i18n="referralOption">Referral</option>
+            <option value="Follow-up" data-i18n="followupOption">Follow-up</option>
+          </select>
+        </label>
+
+        <label>
+          <span data-i18n="facilityLabel">Healthcare Facility</span>
+          <select id="facilitySelect" name="facility" required>
+            <option value="" data-i18n="selectFacilityOption">Select facility</option>
+          </select>
+          <span class="field-error" id="err-facility" role="alert"></span>
+        </label>
+
+        <label>
+          <span data-i18n="specialtyLabel">Speciality</span>
+          <select id="specialty" name="specialty" required>
+            <option value="" data-i18n="selectSpecialty">Select speciality</option>
+            <option>General Medicine</option>
+            <option>Cardiology</option>
+            <option>Gynecology</option>
+            <option>Pediatrics</option>
+            <option>Orthopedics</option>
+          </select>
+        </label>
+
+        <label>
+          <span data-i18n="doctorLabel">Doctor (optional)</span>
+          <select id="doctorSelect" name="doctor">
+            <option value="" data-i18n="selectDoctor">Select doctor (optional)</option>
+          </select>
+        </label>
+
+        <label>
+          <span data-i18n="dateLabel">Preferred Date</span>
+          <input id="preferredDate" name="preferredDate" type="date" required>
+        </label>
+
+        <label>
+          <span data-i18n="timeLabel">Preferred Time (sample slots)</span>
+          <select id="preferredTime" name="preferredTime" required>
+            <option value="" data-i18n="selectTime">Select time</option>
+          </select>
+        </label>
+
+        <label id="referralGroup" class="hidden">
+          <span data-i18n="referralSourceLabel">Referral Source</span>
+          <input id="referralSource" name="referralSource" placeholder="Enter referring doctor or facility">
+        </label>
+      </div>
+
+      <label class="full-label">
+        <span data-i18n="notesLabel">Describe your request (fictional)</span>
+        <textarea id="notes" name="notes" rows="4" maxlength="400" placeholder="Write your message here..."></textarea>
+      </label>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <span data-i18n="consentText">I agree to submit this fictional information for this demonstration only.</span>
+      </label>
+
+      <button type="submit" class="primary-btn" data-i18n="submitButton">Submit Demo Request</button>
+      <p id="formMessage" role="status" aria-live="polite"></p>
+    </form>
+
+    <div id="referralCard" class="referral-card hidden" aria-labelledby="referralCardTitle">
+      <div class="referral-top">
+        <div>
+          <p class="tag" data-i18n="referralCardTag">DIGITAL REFERRAL – DEMO ONLY</p>
+          <h2 id="referralCardTitle">SwasthyaSetu AI</h2>
+        </div>
+        <span class="referral-symbol">✚</span>
+      </div>
+      <p class="demo-only-banner" data-i18n="demoOnlyBanner">DEMO ONLY – NOT A REAL REFERRAL OR CONFIRMED APPOINTMENT</p>
+      <div id="referralContent"></div>
+      <button id="printReferral" class="primary-btn" type="button" data-i18n="printButton">Print Demo Card</button>
+    </div>
+  </section>
+
+  <!-- SAMPLE BEDS & AMBULANCE -->
+  <section id="beds" class="section alternate">
+    <div class="section-heading">
+      <p class="tag" data-i18n="bedsTag">SAMPLE CAPACITY</p>
+      <h2 data-i18n="bedsTitle">Sample Bed &amp; Ambulance Information</h2>
+      <p data-i18n="bedsText">Static fictional numbers for demonstration only.</p>
+    </div>
+
+    <div class="emergency-box" role="alert">
+      <strong data-i18n="emergencyBannerTitle">EMERGENCY</strong>
+      <p data-i18n="bedsEmergency">This app cannot check real bed availability or dispatch ambulances. For emergencies in India call <a href="tel:112">112</a> directly.</p>
+    </div>
+
+    <div id="bedsList" class="doctor-grid"></div>
+  </section>
+
+  <!-- TRACKING -->
+  <section id="tracking" class="section">
+    <div class="section-heading">
+      <p class="tag" data-i18n="trackingTag">REQUEST MANAGEMENT</p>
+      <h2 data-i18n="trackingTitle">Track Your Request</h2>
+      <p data-i18n="trackingText">Enter your demo request ID to view its current status stored in this browser session.</p>
+    </div>
+
+    <div class="tracking-box">
+      <label class="visually-hidden" for="trackingId">Request ID</label>
+      <input id="trackingId" placeholder="Enter request ID" autocomplete="off">
+      <button id="trackButton" class="primary-btn" type="button" data-i18n="trackButton">Track Request</button>
+    </div>
+    <div id="trackingResult" class="tracking-result" role="status" aria-live="polite"></div>
+
+    <h3 class="history-heading" data-i18n="historyTitle">Recent Requests on This Browser</h3>
+    <div id="requestHistory"></div>
+    <button type="button" id="clearDemoData" class="danger-btn" data-i18n="clearData">Clear all demo data</button>
+  </section>
+
+  <!-- EMERGENCY HELP -->
+  <section id="emergency" class="section emergency-section">
+    <div class="emergency-content">
+      <div>
+        <p class="emergency-tag" data-i18n="emergencyTag">EMERGENCY SUPPORT</p>
+        <h2 data-i18n="emergencyTitle">Need Emergency Help?</h2>
+        <p data-i18n="emergencyText">For an immediate emergency in India, call the national emergency number.</p>
+        <a href="tel:112" class="emergency-button">☎ 112 – Call Emergency Services</a>
+        <p class="emergency-note" data-i18n="emergencyNote">Do not wait for an online appointment or referral in an emergency. This app cannot dispatch help.</p>
+      </div>
+      <div class="emergency-icon" aria-hidden="true">🚑</div>
+    </div>
+  </section>
+
+  <!-- ADMIN DASHBOARD -->
+  <section id="admin" class="section">
+    <div class="section-heading">
+      <p class="tag" data-i18n="adminTag">FACILITY MANAGEMENT</p>
+      <h2 data-i18n="adminTitle">Hospital Admin Dashboard</h2>
+      <p data-i18n="adminText">Local demo dashboard to review requests and change their status. Data never leaves this browser.</p>
+    </div>
+
+    <div class="admin-warning" data-i18n="adminWarning">
+      Demo only: this dashboard has no authentication and is not connected to a real hospital.
+    </div>
+
+    <div class="admin-stats">
+      <div><strong id="adminTotal">0</strong><span data-i18n="adminTotal">Total Requests</span></div>
+      <div><strong id="adminPending">0</strong><span data-i18n="adminPending">Received</span></div>
+      <div><strong id="adminAccepted">0</strong><span data-i18n="adminAccepted">Accepted</span></div>
+      <div><strong id="adminCompleted">0</strong><span data-i18n="adminCompleted">Completed</span></div>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th data-i18n="tableId">Request ID</th>
+            <th data-i18n="tablePatient">Patient</th>
+            <th data-i18n="tableFacility">Facility</th>
+            <th data-i18n="tableType">Type</th>
+            <th data-i18n="tableStatus">Status</th>
+            <th data-i18n="tableAction">Update Status</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <h3>SwasthyaSetu AI | MediReach</h3>
+  <p data-i18n="footerText">Connecting people with healthcare services – demonstration only.</p>
+  <small data-i18n="footerNote">Educational demonstration only. Sample data. Not an actual medical booking or dispatch service.</small>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../medireach.js" defer></script>
+</body>
+</html>
