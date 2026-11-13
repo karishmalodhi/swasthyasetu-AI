@@ -1,0 +1,698 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f2f6f5;
+    color: #182b35;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    background: white;
+    padding: 30px 18px;
+    border-right: 1px solid #e5eeee;
+    position: fixed;
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 65px;
+}
+
+.logo-icon {
+    font-size: 32px;
+}
+
+.logo h2 {
+    font-size: 18px;
+    color: #143b53;
+}
+
+.logo p {
+    font-size: 12px;
+    color: #777;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px;
+    margin-bottom: 9px;
+    text-decoration: none;
+    color: #34434a;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu a:hover,
+.menu a.active {
+    background: linear-gradient(100deg,#07516b,#21a59c);
+    color: white;
+    box-shadow: 0 5px 15px #1b9d9830;
+}
+
+/* MAIN */
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 25px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h2 {
+    font-size: 25px;
+}
+
+.topbar p {
+    font-size: 13px;
+    color: #777;
+}
+
+.top-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.icon-btn {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: #d9eeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+/* GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    border-radius: 17px;
+    padding: 18px;
+    border: 1px solid #e7eeee;
+    box-shadow: 0 3px 12px #00000008;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(110deg,#e0f5f2,#f1faf8);
+    display: flex;
+    justify-content: space-between;
+    min-height: 275px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-content {
+    width: 65%;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin: 5px 0;
+    color: #102d3c;
+}
+
+.hero h3 {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.badge {
+    background: #d0e9e9;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin: 8px 0;
+}
+
+.hero p {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.progress-info {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.progress {
+    height: 11px;
+    background: #d5e1e3;
+    border-radius: 20px;
+    margin-top: 7px;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    width: 61%;
+    height: 100%;
+    background: linear-gradient(90deg,#07516b,#28a89e);
+    border-radius: 20px;
+}
+
+.hero-image {
+    font-size: 115px;
+    align-self: center;
+    padding: 10px;
+}
+
+/* APPOINTMENT */
+
+.appointment h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.doctor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.doctor-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #dff1ef;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+}
+
+.doctor p {
+    font-size: 12px;
+    color: #777;
+}
+
+.appointment h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.appointment button,
+.profile button,
+.other-section button {
+    padding: 11px;
+    background: linear-gradient(90deg,#07516b,#21a59c);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.appointment button {
+    width: 100%;
+}
+
+/* SECTION */
+
+.section-title {
+    margin: 23px 0 12px;
+    font-size: 18px;
+}
+
+.analytics {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr 1.5fr 1.5fr;
+    gap: 13px;
+}
+
+.analytics h4 {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* CIRCLE */
+
+.circle {
+    width: 120px;
+    height: 120px;
+    margin: 10px auto;
+    border-radius: 50%;
+    background: conic-gradient(#168f91 0% 61%,#e4e9ec 61% 100%);
+    display: grid;
+    place-items: center;
+}
+
+.circle-inner {
+    width: 91px;
+    height: 91px;
+    border-radius: 50%;
+    background: white;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.circle-inner strong {
+    font-size: 25px;
+}
+
+.circle-inner p {
+    font-size: 12px;
+}
+
+.center-text {
+    text-align: center;
+    font-size: 12px;
+}
+
+/* TIMELINE */
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    height: 4px;
+    background: #b8dfd9;
+    width: 100%;
+}
+
+.timeline span {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #54aaa0;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-info {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* GRAPH */
+
+.graph {
+    height: 115px;
+    width: 100%;
+}
+
+.graph svg {
+    width: 100%;
+    height: 100%;
+}
+
+.graph-label {
+    font-size: 11px;
+    text-align: center;
+}
+
+/* HEALTH */
+
+.health-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.health-item {
+    padding: 12px;
+    border-radius: 12px;
+    background: #e3f7f1;
+}
+
+.health-item:nth-child(2) {
+    background: #e8f4fa;
+}
+
+.health-item:nth-child(3) {
+    background: #e8f6f6;
+}
+
+.health-item:nth-child(4) {
+    background: #f8eaf1;
+}
+
+.health-item p {
+    font-size: 10px;
+}
+
+.health-item h3 {
+    font-size: 19px;
+    margin-top: 5px;
+}
+
+.demo-note {
+    font-size: 9px;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* WELLNESS */
+
+.wellness {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 13px;
+}
+
+.wellness-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e3eaea;
+}
+
+.wellness-image {
+    height: 120px;
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+    background: #e2f5ef;
+}
+
+.wellness-card:nth-child(2) .wellness-image {
+    background: #e0f3fa;
+}
+
+.wellness-card:nth-child(3) .wellness-image {
+    background: #f8eae9;
+}
+
+.wellness-content {
+    padding: 12px;
+}
+
+.wellness-content h3 {
+    font-size: 15px;
+}
+
+.wellness-content p {
+    font-size: 11px;
+    color: #666;
+}
+
+/* VACCINATION */
+
+.vaccine-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.vaccine-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #d8f5e9;
+    font-size: 19px;
+}
+
+/* BOTTOM */
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 13px;
+    margin-top: 15px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.profile button {
+    width: auto;
+    margin: 0;
+}
+
+.profile button.secondary {
+    background: white;
+    border: 1px solid #168f91;
+    color: #168f91;
+}
+
+.tip {
+    background: #eeeaff;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.tip-icon {
+    font-size: 35px;
+}
+
+.tip p {
+    font-size: 12px;
+}
+
+/* OTHER SECTIONS */
+
+.other-section .card {
+    margin-top: 20px;
+}
+
+.other-section .card h3 {
+    margin: 15px 0 8px;
+}
+
+.other-section .card p {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.other-section input {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0007;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 420px;
+}
+
+.modal-content h3 {
+    margin-bottom: 15px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 11px;
+    margin: 9px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.modal-content button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #087e83;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-content .close-btn {
+    background: #777;
+}
+
+#message,
+#appointmentMessage {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px) {
+    .analytics {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:850px) {
+    .sidebar {
+        width: 75px;
+        padding: 20px 8px;
+    }
+
+    .logo h2,
+    .logo p,
+    .menu a span {
+        display: none;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    .menu a {
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .main {
+        margin-left: 75px;
+        width: calc(100% - 75px);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:600px) {
+    .main {
+        padding: 12px;
+    }
+
+    .topbar h2 {
+        font-size: 18px;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .analytics,
+    .wellness,
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .profile-buttons {
+        width: 100%;
+    }
+
+    .profile button {
+        flex: 1;
+    }
+}
+
+
+/* FINAL LAYOUT FIX */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.sidebar {
+    z-index: 5;
+}
+
+.main {
+    min-width: 0;
+}
+
+.card {
+    min-width: 0;
+}
+
+.graph svg {
+    display: block;
+}
