@@ -1,0 +1,344 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwasthyaSetu AI | MaternalCare</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/maternalcare.css">
+</head>
+
+<body>
+<div class="container">
+
+<aside class="sidebar">
+    <div class="logo">
+        <div class="logo-icon">❤️</div>
+        <div>
+            <h2>SwasthyaSetu AI</h2>
+            <p>MaternalCare</p>
+        </div>
+    </div>
+
+    <nav class="menu">
+        <a class="active" onclick="showSection('dashboard',this)">🏠 <span>Dashboard</span></a>
+        <a onclick="showSection('profile',this)">👤 <span>My Profile</span></a>
+        <a onclick="showSection('appointments',this)">📅 <span>Appointments</span></a>
+        <a onclick="showSection('health',this)">💗 <span>Health Tips</span></a>
+        <a onclick="showSection('vaccination',this)">💉 <span>Vaccination Tracker</span></a>
+        <a onclick="showSection('settings',this)">⚙️ <span>Settings</span></a>
+    </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+    <div>
+        <h2>Good Morning, <span id="userName">Priya</span>!</h2>
+        <p>Every step of your pregnancy journey matters.</p>
+    </div>
+
+    <div class="top-icons">
+        <button class="icon-btn" type="button">🔍</button>
+        <button class="icon-btn" type="button">🔔</button>
+        <div class="avatar">👩🏻</div>
+    </div>
+</header>
+
+<div id="dashboard">
+
+<div class="dashboard-grid">
+
+<section class="card hero">
+    <div class="hero-content">
+        <h3>Your Pregnancy Journey</h3>
+        <h1 id="pregnancyDuration">24 Weeks + 3 Days</h1>
+
+        <span class="badge" id="trimester">Second Trimester</span>
+
+        <p>Estimated Delivery Date: <strong id="edd">March 02, 2027</strong></p>
+        <p id="daysLeft">108 days to go</p>
+
+        <div class="progress-info">
+            <strong id="progressText">61% Complete</strong>
+            <div class="progress">
+                <span id="progressBar"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-image">🤰🏻</div>
+</section>
+
+<section class="card appointment">
+    <h3>Appointment Panel</h3>
+
+    <div class="doctor">
+        <div class="doctor-icon">👩🏻‍⚕️</div>
+        <div>
+            <strong>Dr. Ananya Sharma</strong>
+            <p>Antenatal Check-up</p>
+        </div>
+    </div>
+
+    <h4>Date &amp; Time:</h4>
+    <p>Next appointment</p>
+    <p id="appointmentDate">Please add appointment date</p>
+
+    <button onclick="showSection('appointments',null)">
+        View Appointment
+    </button>
+</section>
+
+</div>
+
+<h3 class="section-title">Health Analytics Section</h3>
+
+<div class="analytics">
+
+<div class="card">
+    <h4>Pregnancy Progress</h4>
+
+    <div class="circle">
+        <div class="circle-inner">
+            <div>
+                <strong id="circlePercent">61%</strong>
+                <p>Complete</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="center-text">
+        Week <span id="weekNumber">24</span> | Trimester 2
+    </p>
+</div>
+
+<div class="card">
+    <h4>Weekly Pregnancy Timeline</h4>
+
+    <div class="timeline">
+        <span></span><span></span><span></span>
+        <span></span><span></span>
+    </div>
+
+    <div class="timeline-info">
+        <strong>Week <span id="timelineWeek">24</span></strong>
+        <p>Pregnancy development milestone and growth journey.</p>
+        <p>Past → Current Week → Future</p>
+    </div>
+</div>
+
+<div class="card">
+    <h4>Appointment Analytics</h4>
+    <p>Scheduled Antenatal Visits</p>
+
+    <div class="graph">
+        <svg viewBox="0 0 250 120" preserveAspectRatio="none">
+            <path d="M0 100 Q35 65 65 85 T120 60 T180 45 T250 20"
+            fill="none" stroke="#188f91" stroke-width="3"/>
+
+            <path d="M0 100 Q35 65 65 85 T120 60 T180 45 T250 20 L250 120 L0 120Z"
+            fill="#d8f2ed" opacity=".7"/>
+        </svg>
+    </div>
+
+    <p class="graph-label">June | July | Aug | Sep | Oct | Nov</p>
+</div>
+
+<div class="card">
+    <h4>Health Overview</h4>
+
+    <div class="health-boxes">
+        <div class="health-item">
+            <p>Blood Pressure</p>
+            <h3>110/70</h3>
+        </div>
+
+        <div class="health-item">
+            <p>Weight Change</p>
+            <h3>+8 kg</h3>
+        </div>
+
+        <div class="health-item">
+            <p>Glucose Level</p>
+            <h3>90 mg/dL</h3>
+        </div>
+
+        <div class="health-item">
+            <p>Activity Minutes</p>
+            <h3>45 min</h3>
+        </div>
+    </div>
+
+    <p class="demo-note">Illustrative demo values, not actual patient measurements.</p>
+</div>
+
+</div>
+
+<h3 class="section-title">Maternal Wellness Section</h3>
+
+<div class="wellness">
+
+    <div class="wellness-card">
+        <div class="wellness-image">🥗</div>
+        <div class="wellness-content">
+            <h3>Nutrition</h3>
+            <p>Balanced Meals &amp; Healthy Eating</p>
+        </div>
+    </div>
+
+    <div class="wellness-card">
+        <div class="wellness-image">💧</div>
+        <div class="wellness-content">
+            <h3>Hydration</h3>
+            <p>Stay hydrated throughout the day.</p>
+        </div>
+    </div>
+
+    <div class="wellness-card">
+        <div class="wellness-image">🧘🏻‍♀️</div>
+        <div class="wellness-content">
+            <h3>Wellness</h3>
+            <p>Mindful Breathing &amp; Relaxation</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="bottom-grid">
+
+    <div class="card profile">
+        <div class="profile-left">
+            <div class="avatar">👩🏻</div>
+
+            <div>
+                <p>Maternal Health Profile Summary</p>
+                <h3 id="profileName">Priya Sharma</h3>
+                <p class="demo-note">Fictional Demo Patient</p>
+            </div>
+        </div>
+
+        <div class="profile-buttons">
+            <button class="secondary" onclick="openModal()">View Profile</button>
+            <button onclick="openModal()">Update Profile</button>
+        </div>
+    </div>
+
+    <div class="card tip">
+        <div class="tip-icon">💡</div>
+        <div>
+            <strong>Pregnancy Tip Banner</strong>
+            <p>Talk, sing or read a story to your baby. Enjoy bonding moments during your pregnancy journey.</p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- APPOINTMENTS -->
+
+<div id="appointments" class="other-section" style="display:none">
+    <h2>Appointments</h2>
+
+    <div class="card">
+        <h3>Upcoming Antenatal Check-up</h3>
+        <p>Doctor: Dr. Ananya Sharma</p>
+
+        <label for="appointmentInput">Appointment Date:</label>
+        <input type="date" id="appointmentInput">
+
+        <button onclick="saveAppointment()">Save Appointment</button>
+        <p id="appointmentMessage"></p>
+    </div>
+</div>
+
+<!-- PROFILE -->
+
+<div id="profile" class="other-section" style="display:none">
+    <h2>My Maternal Profile</h2>
+
+    <div class="card">
+        <h3>Mother's Information</h3>
+        <p>Name: <span id="profilePageName">Priya Sharma</span></p>
+        <p>Age: <span id="profilePageAge">Demo</span></p>
+        <p>Pregnancy tracking based on Last Menstrual Period (LMP).</p>
+        <button onclick="openModal()">Update Profile</button>
+    </div>
+</div>
+
+<!-- HEALTH TIPS -->
+
+<div id="health" class="other-section" style="display:none">
+    <h2>Maternal Health Tips</h2>
+
+    <div class="card">
+        <h3>Nutrition</h3>
+        <p>Eat a varied and balanced diet including fruits, vegetables, whole grains and protein-rich foods.</p>
+
+        <h3>Hydration</h3>
+        <p>Drink fluids regularly and follow your healthcare professional's advice.</p>
+
+        <h3>Wellness</h3>
+        <p>Get adequate rest and discuss suitable physical activity with your healthcare professional.</p>
+    </div>
+</div>
+
+<!-- VACCINATION -->
+
+<div id="vaccination" class="other-section" style="display:none">
+    <h2>Vaccination Tracker</h2>
+
+    <div class="card">
+        <div class="vaccine-item">
+            <div class="vaccine-icon">💉</div>
+            <div>
+                <strong>Vaccination Information</strong>
+                <p>Discuss recommended vaccines with your healthcare provider.</p>
+            </div>
+        </div>
+
+        <p>Vaccination timing and eligibility must be confirmed by a qualified healthcare professional.</p>
+    </div>
+</div>
+
+<!-- SETTINGS -->
+
+<div id="settings" class="other-section" style="display:none">
+    <h2>Settings</h2>
+
+    <div class="card">
+        <p>SwasthyaSetu AI – MaternalCare</p>
+        <p>Version 1.0</p>
+        <p>Healthcare awareness and pregnancy tracking platform.</p>
+    </div>
+</div>
+
+</main>
+</div>
+
+<!-- PROFILE MODAL -->
+
+<div class="modal" id="profileModal">
+    <div class="modal-content">
+
+        <h3>Update Maternal Profile</h3>
+
+        <input type="text" id="inputName" placeholder="Mother's Name">
+        <input type="number" id="inputAge" placeholder="Age">
+
+        <label for="inputLMP">Last Menstrual Period (LMP)</label>
+        <input type="date" id="inputLMP">
+
+        <button onclick="saveProfile()">Save Profile</button>
+        <button onclick="closeModal()" class="close-btn">Close</button>
+
+        <p id="message"></p>
+    </div>
+</div>
+
+<script src="../assets/maternalcare.js"></script>
+
+</body>
+</html>
