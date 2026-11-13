@@ -1,0 +1,81 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #102a43;
+    --blue: #176b87;
+    --teal: #16a6a1;
+    --orange: #f59b23;
+    --green: #16834a;
+    --light: #f4f7fa;
+    --white: #ffffff;
+    --text: #243b53;
+    --muted: #627d98;
+    --border: #e3ebf2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.section {
+    padding: 85px 8%;
+}
+
+.tagline {
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.primary-btn,
+.secondary-btn,
+.contact-btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.primary-btn {
+    background: var(--orange);
+    color: white;
+}
+
+.secondary-btn {
+    color: var(--navy);
+    background: white;
+    border: 1px solid var(--navy);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.contact-btn:hover {
+    transform: translateY(-3px);
+}

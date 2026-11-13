@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SwasthyaSetu AI</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+        <a href="../index.html" class="dash-brand">
+            <span class="brand-icon">✚</span>
+            <span>SwasthyaSetu <b>AI</b></span>
+        </a>
+
+        <p class="sidebar-label">MAIN MENU</p>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="active">⌂ Dashboard</a>
+            <a href="healthguard.html">♡ HealthGuard</a>
+            <a href="maternalcare.html">✚ MaternalCare</a>
+            <a href="medireach.html">⌖ MediReach</a>
+            <a href="referrals.html">⇄ Smart Referral</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <span>Need Assistance?</span>
+                <p>Explore healthcare support and guidance.</p>
+                <a href="#support">Get Help →</a>
+            </div>
+
+            <a href="../index.html" class="logout-link">↪ Back to Home</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <header class="dash-topbar">
+            <div>
+                <span class="topbar-label">HEALTHCARE PLATFORM</span>
+                <h2>My Dashboard</h2>
+            </div>
+
+            <div class="profile-area">
+                <div class="notification-icon">♧</div>
+                <div class="profile-avatar">U</div>
+                <div>
+                    <strong>User</strong>
+                    <small>Member</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- Welcome -->
+        <section class="welcome-banner">
+            <div>
+                <span class="welcome-tag">WELCOME TO SWASTHYASETU AI</span>
+                 <h1 id="welcomeUser">Welcome back!</h1>
+                <p>
+                    One connected platform for preventive healthcare,
+                    maternal care and accessible medical services.
+                </p>
+                <a href="#health-services" class="welcome-button">
+                    Explore Services →
+                </a>
+            </div>
+
+            <div class="welcome-symbol">✚</div>
+        </section>
+
+        <!-- Overview -->
+        <section class="overview-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">AT A GLANCE</span>
+                    <h2>Your Healthcare Overview</h2>
+                </div>
+                <span class="overview-note">Platform Overview</span>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon health-icon">♡</div>
+                    <h3>HealthGuard</h3>
+                    <p>Preventive health screening and insights.</p>
+                    <span class="card-status">Available</span>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-icon maternal-icon">✚</div>
+                    <h3>MaternalCare</h3>
+                    <p>Maternal and child healthcare support.</p>
+                    <span class="card-status">Available</span>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-icon medical-icon">⌖</div>
+                    <h3>MediReach</h3>
+                    <p>Discover accessible healthcare services.</p>
+                    <span class="card-status">Available</span>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-icon referral-icon">⇄</div>
+                    <h3>Smart Referral</h3>
+                    <p>Connect healthcare needs with follow-up support.</p>
+                    <span class="card-status">Available</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Services -->
+        <section class="services-section" id="health-services">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">OUR SERVICES</span>
+                    <h2>Explore Healthcare Modules</h2>
+                </div>
+            </div>
+
+            <div class="service-grid">
+
+                <article class="service-card">
+                    <div class="service-top health-gradient">♡</div>
+                    <div class="service-content">
+                        <span class="service-number">01 / PREVENTIVE CARE</span>
+                        <h3>HealthGuard</h3>
+                        <p>
+                            Explore AI-supported health risk screening,
+                            explainable insights and preventive awareness.
+                        </p>
+                        <a href="healthguard.html">Open HealthGuard →</a>
+                    </div>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-top maternal-gradient">✚</div>
+                    <div class="service-content">
+                        <span class="service-number">02 / MATERNAL CARE</span>
+                        <h3>MaternalCare</h3>
+                        <p>
+                            Access pregnancy tracking, maternal health
+                            awareness and vaccination reminders.
+                        </p>
+                        <a href="maternalcare.html">Open MaternalCare →</a>
+                    </div>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-top reach-gradient">⌖</div>
+                    <div class="service-content">
+                        <span class="service-number">03 / HEALTHCARE ACCESS</span>
+                        <h3>MediReach</h3>
+                        <p>
+                            Explore nearby healthcare facilities and
+                            healthcare access support.
+                        </p>
+                        <a href="medireach.html">Open MediReach →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Referral -->
+        <section class="referral-banner">
+            <div>
+                <span class="section-eyebrow">CONNECTED CARE</span>
+                <h2>Healthcare doesn't end with a screening.</h2>
+                <p>
+                    Explore Smart Referral for a connected care
+                    and follow-up workflow.
+                </p>
+            </div>
+            <a href="referrals.html">Explore Smart Referral →</a>
+        </section>
+
+        <!-- Support -->
+        <footer class="dashboard-footer" id="support">
+            <div>
+                <strong>SwasthyaSetu AI</strong>
+                <p>Smart Healthcare, Early Prevention, Accessible to Everyone.</p>
+            </div>
+            <span>Independent Healthcare Technology Prototype · 2026</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="../assets/js/dashboard.js" defer></script>
+</body>
+</html>
