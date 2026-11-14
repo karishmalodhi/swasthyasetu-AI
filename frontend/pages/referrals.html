@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102b46">
+    <title>Smart Referral | SwasthyaSetu AI</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/referrals.css">
+</head>
+<body>
+<div class="dashboard-layout">
+    <aside class="sidebar">
+        <a href="../index.html" class="dash-brand"><span class="brand-icon">✚</span><span>SwasthyaSetu <b>AI</b></span></a>
+        <p class="sidebar-label">MAIN MENU</p>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="dashboard.html">⌂ Dashboard</a>
+            <a href="healthguard.html">♡ HealthGuard</a>
+            <a href="maternalcare.html">✚ MaternalCare</a>
+            <a href="ml-insights.html">✧ Care Coordination ML Demo</a>
+            <a href="medireach.html">⌖ MediReach</a>
+            <a href="patient-journey.html">↗ Unified Patient Journey</a>
+            <a href="referrals.html" class="active" aria-current="page">⇄ Smart Referral</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="help-card"><span>Demo workspace</span><p>Use fictional information only. This tool is not a clinical record.</p></div>
+            <a href="../index.html" class="logout-link">↪ Back to Home</a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main referral-main">
+        <header class="dash-topbar">
+            <div><span class="topbar-label">CARE COORDINATION</span><h2>Smart Referral</h2></div>
+            <div class="profile-area"><div class="profile-avatar" aria-hidden="true">⇄</div><div><strong>Demo workspace</strong><small>Sample data only</small></div></div>
+        </header>
+
+        <section class="referral-hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <span class="welcome-tag">CONNECTED CARE · DEMO</span>
+                <h1 id="page-title">Keep every next step <span>in view.</span></h1>
+                <p>Organize fictional referral coordination tasks and follow-up milestones in one simple view.</p>
+            </div>
+            <div class="hero-mark" aria-hidden="true">⇄</div>
+        </section>
+
+        <section class="demo-warning" role="note" aria-label="Important demo data notice">
+            <span class="warning-icon" aria-hidden="true">!</span>
+            <div><strong>Fictional demo only</strong><p>Do not enter real patient information. This prototype stores demo data in this browser only; it is not a clinical record.</p></div>
+        </section>
+
+        <section class="referral-content-grid" aria-label="Referral workspace">
+            <section class="panel create-panel" aria-labelledby="create-title">
+                <div class="panel-heading"><div><span class="section-eyebrow">NEW WORK ITEM</span><h2 id="create-title">Add a demo referral</h2></div><span class="heading-icon" aria-hidden="true">＋</span></div>
+                <p class="panel-intro">Use a synthetic case ID and a coordination task. No names, contact details, or diagnoses.</p>
+                <form id="referral-form">
+                    <div class="field"><label for="case-id">Synthetic case ID</label><input id="case-id" name="caseId" type="text" placeholder="DEMO-500" pattern="DEMO-[0-9]{3,}" title="Use DEMO- followed by at least three digits, such as DEMO-500." required autocomplete="off" maxlength="20"><small>Format: DEMO- followed by digits (for example, DEMO-500).</small></div>
+                    <div class="field"><label for="facility">Facility</label><input id="facility" name="facility" type="text" placeholder="Example: Community Health Center" required maxlength="80" autocomplete="off"></div>
+                    <div class="field"><label for="task">Coordination task</label><textarea id="task" name="task" rows="3" placeholder="Example: Confirm a follow-up appointment" required maxlength="140"></textarea></div>
+                    <div class="field"><label for="due-date">Due date</label><input id="due-date" name="dueDate" type="date" required></div>
+                    <button class="action-button" type="submit">Add demo referral <span aria-hidden="true">→</span></button>
+                    <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <section class="panel list-panel" aria-labelledby="list-title">
+                <div class="panel-heading list-heading"><div><span class="section-eyebrow">FOLLOW-UP BOARD</span><h2 id="list-title">Referral worklist</h2></div><button type="button" class="reset-button" id="reset-button">↺ Reset samples</button></div>
+                <div class="list-summary"><p>Track demo coordination items by case, destination, date, and current status.</p><span id="result-count" class="result-count" aria-live="polite"></span></div>
+                <div class="filters">
+                    <div class="field search-field"><label for="search-input">Search case, facility, task, date, or status</label><input id="search-input" type="search" placeholder="Try DEMO-104 or appointment…" autocomplete="off"></div>
+                    <div class="field status-field"><label for="status-filter">Filter by status</label><select id="status-filter"><option value="">All statuses</option></select></div>
+                </div>
+                <div id="referral-list" class="referral-list" aria-live="polite"></div>
+                <p id="empty-state" class="empty-state" hidden>No matching referrals. Adjust your search or add a demo item.</p>
+                <p class="storage-note"><span aria-hidden="true">⌂</span> Demo entries stay in this browser's local storage.</p>
+            </section>
+        </section>
+
+        <footer class="dashboard-footer"><div><strong>SwasthyaSetu AI</strong><p>Smart Healthcare, Early Prevention, Accessible to Everyone.</p></div><span>Independent Healthcare Technology Prototype · 2026</span></footer>
+    </main>
+</div>
+<script src="../assets/js/referral-store.js" defer></script>
+<script src="../assets/js/referrals.js" defer></script>
+<script src="../assets/js/voice-assistant.js" defer></script>
+</body>
+</html>

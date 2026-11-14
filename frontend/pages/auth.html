@@ -59,7 +59,7 @@
 
         <form id="registerForm" class="hidden">
             <h2>Create Account</h2>
-            <p class="form-subtitle">Join SwasthyaSetu AI today.</p>
+            <p class="form-subtitle">Create a patient demo account. Staff roles use the published demo credentials.</p>
 
             <label for="fullName">Full Name</label>
             <input type="text" id="fullName" placeholder="Enter your full name" required>
@@ -68,16 +68,20 @@
             <input type="email" id="registerEmail" placeholder="Enter your email" required>
 
             <label for="registerPassword">Create Password</label>
-            <input type="password" id="registerPassword" placeholder="Create a password" minlength="6" required>
+            <input type="password" id="registerPassword" placeholder="Create a password (8+ characters)" minlength="8" required>
 
             <button class="auth-submit" type="submit">Create Account →</button>
             <p class="switch-text">Already registered? <a href="#" id="showLogin">Login here</a></p>
         </form>
 
-        <p id="authMessage" class="auth-message" aria-live="polite"></p>
+        <div class="auth-message" aria-live="polite">
+          <p id="authMessage"></p>
+          <small>Demo staff accounts: worker@demo.swasthyasetu / WorkerDemo123! · admin@demo.swasthyasetu / AdminDemo123!</small>
+        </div>
     </section>
 </main>
 
 <script src="../assets/js/auth.js" defer></script>
+    <script src="../assets/js/voice-assistant.js" defer></script>
 </body>
 </html>

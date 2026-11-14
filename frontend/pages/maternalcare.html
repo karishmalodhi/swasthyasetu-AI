@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,15 +28,17 @@
         <a onclick="showSection('appointments',this)">📅 <span>Appointments</span></a>
         <a onclick="showSection('health',this)">💗 <span>Health Tips</span></a>
         <a onclick="showSection('vaccination',this)">💉 <span>Vaccination Tracker</span></a>
+        <a href="ml-insights.html">✧ <span>ML Insights Demo</span></a>
         <a onclick="showSection('settings',this)">⚙️ <span>Settings</span></a>
     </nav>
 </aside>
 
 <main class="main">
+<div class="safety-note" role="note"><strong>Prototype notice</strong> This demo is not medical advice, does not connect to a care provider, and is not suitable for real patient data.</div>
 
 <header class="topbar">
     <div>
-        <h2>Good Morning, <span id="userName">Priya</span>!</h2>
+        <h2>Good Morning, <span id="userName">there</span>!</h2>
         <p>Every step of your pregnancy journey matters.</p>
     </div>
 
@@ -54,15 +56,16 @@
 <section class="card hero">
     <div class="hero-content">
         <h3>Your Pregnancy Journey</h3>
-        <h1 id="pregnancyDuration">24 Weeks + 3 Days</h1>
+        <h1 id="pregnancyDuration">Add your profile to begin</h1>
 
-        <span class="badge" id="trimester">Second Trimester</span>
+        <span class="badge" id="trimester">Pregnancy stage</span>
 
-        <p>Estimated Delivery Date: <strong id="edd">March 02, 2027</strong></p>
-        <p id="daysLeft">108 days to go</p>
+        <p>Estimated due date: <strong id="edd">Add your last menstrual period date</strong></p>
+        <p id="daysLeft">Your dates will appear here after setup.</p>
+        <button id="setupProfileButton" class="setup-profile-btn" onclick="openModal()">Set up profile</button>
 
         <div class="progress-info">
-            <strong id="progressText">61% Complete</strong>
+            <strong id="progressText">Progress unavailable</strong>
             <div class="progress">
                 <span id="progressBar"></span>
             </div>
@@ -76,16 +79,16 @@
     <h3>Appointment Panel</h3>
 
     <div class="doctor">
-        <div class="doctor-icon">👩🏻‍⚕️</div>
+        <div class="doctor-icon">📅</div>
         <div>
-            <strong>Dr. Ananya Sharma</strong>
-            <p>Antenatal Check-up</p>
+            <strong>Your saved visits</strong>
+            <p>Appointments you add in this demo</p>
         </div>
     </div>
 
-    <h4>Date &amp; Time:</h4>
-    <p>Next appointment</p>
-    <p id="appointmentDate">Please add appointment date</p>
+    <h4>Next saved appointment:</h4>
+    
+    <p id="appointmentDate">No appointment saved yet.</p>
 
     <button onclick="showSection('appointments',null)">
         View Appointment
@@ -104,14 +107,14 @@
     <div class="circle">
         <div class="circle-inner">
             <div>
-                <strong id="circlePercent">61%</strong>
+                <strong id="circlePercent">—</strong>
                 <p>Complete</p>
             </div>
         </div>
     </div>
 
     <p class="center-text">
-        Week <span id="weekNumber">24</span> | Trimester 2
+        Week <span id="weekNumber">—</span> | Add profile
     </p>
 </div>
 
@@ -124,27 +127,15 @@
     </div>
 
     <div class="timeline-info">
-        <strong>Week <span id="timelineWeek">24</span></strong>
-        <p>Pregnancy development milestone and growth journey.</p>
-        <p>Past → Current Week → Future</p>
+        <strong>Pregnancy week: <span id="timelineWeek">—</span></strong>
+        <p id="milestoneText">Add your profile to see a general pregnancy-stage overview.</p>
+        <p>General information only; confirm care and milestones with a qualified clinician.</p>
     </div>
 </div>
 
 <div class="card">
-    <h4>Appointment Analytics</h4>
-    <p>Scheduled Antenatal Visits</p>
-
-    <div class="graph">
-        <svg viewBox="0 0 250 120" preserveAspectRatio="none">
-            <path d="M0 100 Q35 65 65 85 T120 60 T180 45 T250 20"
-            fill="none" stroke="#188f91" stroke-width="3"/>
-
-            <path d="M0 100 Q35 65 65 85 T120 60 T180 45 T250 20 L250 120 L0 120Z"
-            fill="#d8f2ed" opacity=".7"/>
-        </svg>
-    </div>
-
-    <p class="graph-label">June | July | Aug | Sep | Oct | Nov</p>
+    <h4>Appointment tracking</h4>
+    <p>Saved appointments appear in the appointment panel. This demo does not connect to a clinic or confirm bookings.</p>
 </div>
 
 <div class="card">
@@ -153,26 +144,26 @@
     <div class="health-boxes">
         <div class="health-item">
             <p>Blood Pressure</p>
-            <h3>110/70</h3>
+            <h3>Not recorded</h3>
         </div>
 
         <div class="health-item">
             <p>Weight Change</p>
-            <h3>+8 kg</h3>
+            <h3>Not recorded</h3>
         </div>
 
         <div class="health-item">
             <p>Glucose Level</p>
-            <h3>90 mg/dL</h3>
+            <h3>Not recorded</h3>
         </div>
 
         <div class="health-item">
             <p>Activity Minutes</p>
-            <h3>45 min</h3>
+            <h3>Not recorded</h3>
         </div>
     </div>
 
-    <p class="demo-note">Illustrative demo values, not actual patient measurements.</p>
+    <p class="demo-note">No measurements stored. This MVP screen does not yet collect health readings.</p>
 </div>
 
 </div>
@@ -215,8 +206,8 @@
 
             <div>
                 <p>Maternal Health Profile Summary</p>
-                <h3 id="profileName">Priya Sharma</h3>
-                <p class="demo-note">Fictional Demo Patient</p>
+                <h3 id="profileName">Profile not set up</h3>
+                <p class="demo-note">Demo data is stored without account authentication. Do not enter real patient information.</p>
             </div>
         </div>
 
@@ -240,17 +231,24 @@
 <!-- APPOINTMENTS -->
 
 <div id="appointments" class="other-section" style="display:none">
+    <p class="demo-note">Appointments saved here are personal reminders only; no clinic booking or confirmation is made.</p>
     <h2>Appointments</h2>
 
     <div class="card">
-        <h3>Upcoming Antenatal Check-up</h3>
-        <p>Doctor: Dr. Ananya Sharma</p>
+        <h3>Plan an appointment</h3>
+        <p>This records a reminder in the demo; it does not book with a provider.</p>
 
         <label for="appointmentInput">Appointment Date:</label>
         <input type="date" id="appointmentInput">
 
         <button onclick="saveAppointment()">Save Appointment</button>
         <p id="appointmentMessage"></p>
+    </div>
+    <div class="card appointment-list-card">
+        <h3>Saved reminders</h3>
+        <ul id="appointmentList" aria-live="polite">
+            <li>No reminders saved yet.</li>
+        </ul>
     </div>
 </div>
 
@@ -261,9 +259,9 @@
 
     <div class="card">
         <h3>Mother's Information</h3>
-        <p>Name: <span id="profilePageName">Priya Sharma</span></p>
-        <p>Age: <span id="profilePageAge">Demo</span></p>
-        <p>Pregnancy tracking based on Last Menstrual Period (LMP).</p>
+        <p>Name: <span id="profilePageName">Not set up</span></p>
+        <p>Age: <span id="profilePageAge">Not provided</span></p>
+        <p>Pregnancy date estimates use the LMP you enter and are not a substitute for clinical dating.</p>
         <button onclick="openModal()">Update Profile</button>
     </div>
 </div>
@@ -326,7 +324,7 @@
         <h3>Update Maternal Profile</h3>
 
         <input type="text" id="inputName" placeholder="Mother's Name">
-        <input type="number" id="inputAge" placeholder="Age">
+        <input type="number" id="inputAge" placeholder="Age" min="18" max="60">
 
         <label for="inputLMP">Last Menstrual Period (LMP)</label>
         <input type="date" id="inputLMP">
@@ -334,11 +332,12 @@
         <button onclick="saveProfile()">Save Profile</button>
         <button onclick="closeModal()" class="close-btn">Close</button>
 
-        <p id="message"></p>
+        <p id="message" role="status" aria-live="polite"></p>
     </div>
 </div>
 
 <script src="../assets/maternalcare.js"></script>
 
+    <script src="../assets/js/voice-assistant.js" defer></script>
 </body>
 </html>

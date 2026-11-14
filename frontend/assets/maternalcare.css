@@ -75,6 +75,19 @@ body {
     width: calc(100% - 250px);
     padding: 25px;
 }
+.safety-note {
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    border: 1px solid #e6c987;
+    border-left: 4px solid #bd8324;
+    border-radius: 10px;
+    background: #fff8e9;
+    color: #493918;
+    font-size: 13px;
+}
+.safety-note strong {
+    margin-right: 5px;
+}
 
 .topbar {
     display: flex;
@@ -178,6 +191,22 @@ body {
     margin-top: 12px;
     font-size: 13px;
 }
+.setup-profile-btn {
+    margin-top: 10px;
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 8px;
+    background: #07516b;
+    color: #fff;
+    cursor: pointer;
+}
+.appointment-list-card {
+    margin-top: 14px;
+}
+#appointmentList {
+    margin: 10px 0 0 20px;
+    line-height: 1.9;
+}
 
 .progress {
     height: 11px;
@@ -189,7 +218,7 @@ body {
 
 .progress span {
     display: block;
-    width: 61%;
+    width: 0%;
     height: 100%;
     background: linear-gradient(90deg,#07516b,#28a89e);
     border-radius: 20px;
@@ -276,7 +305,7 @@ body {
     height: 120px;
     margin: 10px auto;
     border-radius: 50%;
-    background: conic-gradient(#168f91 0% 61%,#e4e9ec 61% 100%);
+    background: conic-gradient(#e4e9ec 0% 100%);
     display: grid;
     place-items: center;
 }

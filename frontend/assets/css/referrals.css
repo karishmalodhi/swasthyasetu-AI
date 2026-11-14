@@ -1,0 +1,88 @@
+/* Smart Referral page */
+.referral-main { background: #f3f7fa; }
+.referral-hero {
+    min-height: 210px; padding: 35px 40px; border-radius: 18px;
+    background: linear-gradient(115deg, #102b46, #087f83); color: #fff;
+    display: flex; align-items: center; justify-content: space-between; overflow: hidden;
+}
+.referral-hero h1 { max-width: 650px; margin: 11px 0 8px; font-size: clamp(28px, 3vw, 39px); line-height: 1.2; }
+.referral-hero h1 span { color: #8be0d5; }
+.referral-hero p { max-width: 610px; color: #d5e6ed; font-size: 14px; }
+.hero-mark { color: rgba(255,255,255,.16); font-size: 120px; line-height: 1; padding: 0 30px; }
+.demo-warning {
+    display: flex; align-items: flex-start; gap: 14px; margin: 20px 0 24px; padding: 17px 20px;
+    border: 1px solid #f1d69b; border-left: 5px solid #e5ad4c; border-radius: 11px;
+    background: #fff9eb; color: #503b16;
+}
+.warning-icon { width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border-radius: 50%; background: #f4c86d; font-weight: 800; }
+.demo-warning strong { font-size: 14px; }
+.demo-warning p { margin-top: 3px; font-size: 12px; line-height: 1.6; color: #6a542a; }
+.referral-content-grid { display: grid; grid-template-columns: minmax(270px, .78fr) minmax(0, 1.55fr); gap: 20px; align-items: start; }
+.panel { min-width: 0; padding: 24px; background: #fff; border: 1px solid #e5edf1; border-radius: 14px; box-shadow: 0 5px 18px rgba(16,43,70,.035); }
+.panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.panel-heading h2 { margin-top: 5px; color: #102b46; font-size: 20px; }
+.heading-icon { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 11px; background: #e1f4f0; color: #087f83; font-size: 23px; }
+.panel-intro, .list-summary p { color: #718394; font-size: 12px; line-height: 1.65; }
+.panel-intro { margin: 12px 0 19px; }
+#referral-form { display: grid; gap: 14px; }
+.field { min-width: 0; display: grid; gap: 6px; }
+.field label { color: #29445b; font-size: 12px; font-weight: 700; }
+.field input, .field textarea, .field select {
+    width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid #d9e3e9; border-radius: 8px;
+    background: #fff; color: #17334d; font: inherit; font-size: 13px; outline: none;
+}
+.field textarea { min-height: 80px; resize: vertical; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: #07858a; box-shadow: 0 0 0 3px rgba(7,133,138,.13); }
+.field input::placeholder, .field textarea::placeholder { color: #99a9b5; }
+.field small { color: #81909d; font-size: 10px; line-height: 1.5; }
+.action-button { min-height: 45px; margin-top: 3px; border: 0; border-radius: 8px; background: #087f83; color: #fff; font-size: 13px; font-weight: 800; transition: .2s; }
+.action-button:hover { background: #066b70; transform: translateY(-1px); }
+.action-button span { padding-left: 7px; }
+.form-message { min-height: 18px; color: #087f61; font-size: 12px; }
+.form-message.error { color: #b23a32; }
+.list-heading { align-items: flex-start; }
+.reset-button { border: 1px solid #d9e3e9; border-radius: 8px; padding: 9px 12px; background: #fff; color: #29445b; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.reset-button:hover { border-color: #087f83; color: #087f83; }
+.list-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 10px 0 17px; }
+.result-count { color: #087f83; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.filters { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 12px; margin-bottom: 16px; }
+.referral-list { display: grid; gap: 10px; }
+.referral-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(175px, .7fr); gap: 14px; align-items: center; padding: 16px; border: 1px solid #e5edf1; border-radius: 11px; background: #fff; }
+.case-line { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.case-id { color: #102b46; font-size: 14px; font-weight: 800; }
+.status-badge { display: inline-block; border-radius: 20px; padding: 4px 9px; background: #e5f5f1; color: #087f83; font-size: 10px; font-weight: 800; }
+.status-badge.status-new { background: #eef2f6; color: #52677a; }
+.status-badge.status-referred { background: #e9efff; color: #526fbd; }
+.status-badge.status-appointment-scheduled { background: #fff0e4; color: #a35b21; }
+.status-badge.status-follow-up-complete { background: #e5f5f1; color: #087f61; }
+.referral-details { display: grid; gap: 4px; margin-top: 8px; }
+.referral-details strong { color: #29445b; font-size: 12px; }
+.referral-details span { color: #718394; font-size: 11px; line-height: 1.5; }
+.card-controls { display: grid; gap: 6px; }
+.card-controls label { color: #718394; font-size: 10px; font-weight: 700; }
+.card-controls select { min-height: 38px; width: 100%; padding: 8px 9px; border: 1px solid #d9e3e9; border-radius: 7px; background: #fff; color: #29445b; font: inherit; font-size: 11px; }
+.card-controls select:focus { border-color: #07858a; outline: 3px solid rgba(7,133,138,.13); }
+.empty-state { padding: 28px 12px; text-align: center; color: #718394; font-size: 13px; }
+.storage-note { margin-top: 16px; padding-top: 13px; border-top: 1px solid #edf1f4; color: #81909d; font-size: 10px; }
+.storage-note span { margin-right: 5px; color: #087f83; }
+@media (max-width: 1000px) {
+    .referral-content-grid { grid-template-columns: 1fr; }
+    .create-panel { order: 2; }
+    .list-panel { order: 1; }
+}
+@media (max-width: 750px) {
+    .referral-hero { min-height: auto; padding: 29px 25px; }
+    .hero-mark { display: none; }
+    .referral-content-grid { gap: 15px; }
+    .panel { padding: 20px; }
+}
+@media (max-width: 520px) {
+    .referral-hero { padding: 25px 20px; }
+    .referral-hero h1 { font-size: 27px; }
+    .demo-warning { padding: 14px; }
+    .panel { padding: 17px; }
+    .filters { grid-template-columns: 1fr; }
+    .referral-card { grid-template-columns: 1fr; }
+    .card-controls { max-width: none; }
+    .list-heading { flex-direction: column; }
+}

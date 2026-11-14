@@ -1,6 +1,14 @@
-﻿
-const API_URL = "http://127.0.0.1:8000/api/maternal";
-const PATIENT_ID = "demo-patient-001";
+
+const API_URL = "/api/maternal";
+// Browser-local demo identity only; this is NOT authentication or access control.
+const PATIENT_ID = (() => {
+    let id = localStorage.getItem("maternalDemoPatientId");
+    if (!id) {
+        id = "demo-" + (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2));
+        localStorage.setItem("maternalDemoPatientId", id);
+    }
+    return id;
+})();
 
 // NAVIGATION
 function showSection(section, element) {
@@ -152,6 +160,7 @@ function updateProfileUI(data) {
     if (profileName) profileName.innerText = name;
     if (pageName) pageName.innerText = name;
     if (pageAge) pageAge.innerText = age;
+    document.getElementById("setupProfileButton").style.display = "none";
 
     document.getElementById("inputName").value = name;
     document.getElementById("inputAge").value = age;
@@ -160,6 +169,20 @@ function updateProfileUI(data) {
     if (lmp) {
         calculatePregnancy(lmp);
     }
+}
+function showEmptyPregnancyState() {
+    document.getElementById("setupProfileButton").style.display = "inline-block";
+    document.getElementById("pregnancyDuration").innerText = "Add your profile to begin";
+    document.getElementById("trimester").innerText = "Pregnancy stage";
+    document.getElementById("edd").innerText = "Not available";
+    document.getElementById("daysLeft").innerText = "Your dates will appear here after setup.";
+    document.getElementById("progressText").innerText = "Progress unavailable";
+    document.getElementById("circlePercent").innerText = "—";
+    document.getElementById("weekNumber").innerText = "—";
+    document.getElementById("timelineWeek").innerText = "—";
+    document.getElementById("milestoneText").innerText = "Add your profile to see a general pregnancy-stage overview.";
+    document.getElementById("progressBar").style.width = "0%";
+    document.querySelector(".circle").style.background = "conic-gradient(#e4e9ec 0% 100%)";
 }
 
 // LOAD PROFILE
@@ -195,7 +218,7 @@ async function loadProfile() {
                 return await loadProfile();
             }
 
-            calculatePregnancy("2026-05-25");
+            showEmptyPregnancyState();
             return;
         }
 
@@ -268,8 +291,15 @@ function calculatePregnancy(lmp) {
             year: "numeric"
         });
 
-    document.getElementById("daysLeft").innerText =
-        Math.max(0, 280 - diff) + " days to go";
+    document.getElementById("daysLeft").innerText = diff >= 280
+        ? "Estimated due date has passed; please confirm dates with a clinician."
+        : Math.max(0, 280 - diff) + " days to estimated due date";
+    const milestoneText = weeks < 14
+        ? "First trimester: keep routine prenatal care appointments and discuss questions with your care provider."
+        : weeks < 28
+            ? "Second trimester: continue routine prenatal care and discuss any concerns with your care provider."
+            : "Third trimester: continue routine prenatal care and discuss birth planning with your care provider.";
+    document.getElementById("milestoneText").innerText = milestoneText;
 
     let trimester = "First Trimester";
     let trimesterNumber = 1;
@@ -295,6 +325,11 @@ async function saveAppointment() {
 
     const message =
         document.getElementById("appointmentMessage");
+
+    if (!localStorage.getItem("maternalProfile")) {
+        message.innerText = "Please set up your profile before adding a reminder.";
+        return;
+    }
 
     if (!dateValue) {
         message.innerText = "Please select a date.";
@@ -356,20 +391,27 @@ async function loadAppointments() {
 
         const appointments = await response.json();
 
+        const today = new Date().toISOString().slice(0, 10);
+        const sortedAppointments = [...appointments].sort((a, b) =>
+            a.appointment_date.localeCompare(b.appointment_date)
+        );
+        const upcoming = sortedAppointments.find(item => item.appointment_date >= today);
+        const appointmentDate = document.getElementById("appointmentDate");
+        const appointmentList = document.getElementById("appointmentList");
+        appointmentList.innerHTML = "";
+
         if (appointments.length > 0) {
-            const latest = [...appointments].sort((a, b) =>
-                b.appointment_date.localeCompare(a.appointment_date)
-            )[0];
-
-            document.getElementById("appointmentDate").innerText =
-                latest.appointment_date;
-
-            document.getElementById("appointmentInput").value =
-                latest.appointment_date;
-
+            appointmentDate.innerText = upcoming
+                ? upcoming.appointment_date
+                : "No upcoming appointment saved.";
+            sortedAppointments.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.appointment_date} — ${item.appointment_reason || "Appointment reminder"}`;
+                appointmentList.appendChild(li);
+            });
         } else {
-            document.getElementById("appointmentDate").innerText =
-                "Please add appointment date";
+            appointmentDate.innerText = "No appointment saved yet.";
+            appointmentList.innerHTML = "<li>No reminders saved yet.</li>";
         }
 
     } catch (error) {

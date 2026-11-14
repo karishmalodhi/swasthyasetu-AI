@@ -4,6 +4,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedList = document.getElementById("hgSelectedList");
     const selectedArea = document.getElementById("hgSelectedArea");
     const duration = document.getElementById("hgDuration");
+
+    // Explicit answer rules avoid treating a reassuring answer as a warning sign.
+    function identifyEmergencyWarnings(answers) {
+        const emergencyRules = [
+            { symptom: "Chest Pain", question: "Does pain spread to your arm, jaw or back?", answer: "Yes" },
+            { symptom: "Chest Pain", question: "Do you have sweating, breathlessness or faintness with the pain?", answer: "Yes" },
+            { symptom: "Breathing Difficulty", question: "Can you speak full sentences comfortably?", answer: "No" },
+            { symptom: "Breathing Difficulty", question: "Do you have chest pain or confusion?", answer: "Yes" },
+            { symptom: "Breathing Difficulty", question: "Are your lips turning blue or grey?", answer: "Yes" },
+            { symptom: "Headache", question: "Is this the worst or most sudden headache you have experienced?", answer: "Yes" },
+            { symptom: "Stomach Pain", question: "Is the pain sudden or severe?", answer: "Yes" },
+            { symptom: "Stomach Pain", question: "Have you noticed blood in vomit or stool?", answer: "Yes" }
+        ];
+
+        return answers.filter(item => emergencyRules.some(rule =>
+            item.symptom === rule.symptom &&
+            item.question === rule.question &&
+            item.answer === rule.answer
+        ));
+    }
+
+    // Use this one explicit ruleset for both the score override and report.
+    const getEmergencyWarnings = identifyEmergencyWarnings;
     const severity = document.getElementById("hgSeverity");
     const severityValue = document.getElementById("hgSeverityValue");
     const customSymptoms = document.getElementById("hgCustomSymptoms");
@@ -207,23 +230,7 @@ function generateReport(answers) {
     reportContent.innerHTML = "";
 
     // Identify emergency warning signs
-    const emergencyQuestions = [
-        "spread to your arm",
-        "sweating, breathlessness",
-        "full sentences",
-        "chest pain or confusion",
-        "lips turning blue",
-        "worst or most sudden headache",
-        "blood in vomit or stool",
-        "sudden or severe"
-    ];
-
-    const redFlags = answers.filter(item =>
-        item.answer === "Yes" &&
-        emergencyQuestions.some(flag =>
-            item.question.includes(flag)
-        )
-    );
+    const redFlags = getEmergencyWarnings(answers);
 
     const emergency = redFlags.length > 0;
 
@@ -233,24 +240,15 @@ function generateReport(answers) {
         Math.max(0, Number(severity.value) || 0) * 5
     );
 
-    const durationText = (duration.value || "").toLowerCase();
-    let durationScore = 5;
-
-    if (durationText.includes("more than a week")) {
-        durationScore = 20;
-    } else if (durationText.includes("4–7") ||
-               durationText.includes("4-7")) {
-        durationScore = 15;
-    } else if (durationText.includes("3–7") ||
-               durationText.includes("3-7")) {
-        durationScore = 12;
-    } else if (durationText.includes("1–3") ||
-               durationText.includes("1-3")) {
-        durationScore = 8;
-    } else if (durationText.includes("less than 1 day") ||
-               durationText.includes("less than 3 days")) {
-        durationScore = 3;
-    }
+    const durationScores = {
+        "Just started": 3,
+        "A few hours": 3,
+        "1–2 days": 8,
+        "3–7 days": 12,
+        "More than a week": 20,
+        "More than a month": 20
+    };
+    const durationScore = durationScores[duration.value] ?? 5;
 
     const symptomScore = Math.min(
         15,
@@ -306,10 +304,18 @@ function generateReport(answers) {
         ];
     }
 
-    // Chest pain and breathing difficulty need prompt assessment
+    // Chest pain or breathing difficulty needs prompt assessment, even when
+    // it was reported under the cough follow-up questions.
+    const reportedBreathingDifficulty = answers.some(item =>
+        item.symptom === "Cough" &&
+        item.question === "Do you have difficulty breathing?" &&
+        item.answer === "Yes"
+    );
+
     if (!emergency &&
         (selectedSymptoms.includes("Chest Pain") ||
-         selectedSymptoms.includes("Breathing Difficulty"))) {
+         selectedSymptoms.includes("Breathing Difficulty") ||
+         reportedBreathingDifficulty)) {
         actionMessage = "GET PROMPT MEDICAL ASSESSMENT TODAY.";
         actionDetails.unshift(
             "Because you reported chest pain or breathing difficulty, get assessed by a qualified medical professional today."
@@ -615,5 +621,3 @@ document.addEventListener("DOMContentLoaded", function () {
     changeLanguage(savedLanguage);
 
 });
-
-

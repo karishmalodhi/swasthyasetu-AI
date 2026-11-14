@@ -26,8 +26,10 @@
             <a href="dashboard.html" class="active">⌂ Dashboard</a>
             <a href="healthguard.html">♡ HealthGuard</a>
             <a href="maternalcare.html">✚ MaternalCare</a>
+            <a href="ml-insights.html">✧ Care Coordination ML Demo</a>
             <a href="medireach.html">⌖ MediReach</a>
             <a href="referrals.html">⇄ Smart Referral</a>
+            <a href="patient-journey.html">⇄ Unified Patient Journey</a>
         </nav>
 
         <div class="sidebar-bottom">
@@ -115,6 +117,38 @@
                     <p>Connect healthcare needs with follow-up support.</p>
                     <span class="card-status">Available</span>
                 </div>
+
+                <div class="overview-card">
+                    <div class="overview-icon referral-icon">↗</div>
+                    <h3>Unified Patient Journey</h3>
+                    <p>Coordinate demo workflows from registration to follow-up.</p>
+                    <span class="card-status">New</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coordinator overview uses browser-local fictional referral records -->
+        <section class="coordination-section" aria-labelledby="coordination-title">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">CARE COORDINATION · DEMO DATA</span>
+                    <h2 id="coordination-title">Follow-up overview</h2>
+                </div>
+                <a class="coordination-link" href="referrals.html">Open referral tracker →</a>
+            </div>
+            <p class="coordination-disclaimer">Fictional sample cases only. These browser-local demo referrals are separate from server-backed patient journeys and are not for clinical decisions.</p>
+            <div class="coordination-stats" aria-label="Referral summary">
+                <article class="coordination-stat"><span>Total referrals</span><strong id="coordination-total">0</strong></article>
+                <article class="coordination-stat"><span>In progress</span><strong id="coordination-open">0</strong></article>
+                <article class="coordination-stat"><span>Past due</span><strong id="coordination-overdue">0</strong></article>
+                <article class="coordination-stat"><span>Completed</span><strong id="coordination-complete">0</strong></article>
+            </div>
+            <div class="coordination-table-wrap">
+                <table class="coordination-table">
+                    <caption class="sr-only">Recent fictional care-coordination follow-ups</caption>
+                    <thead><tr><th scope="col">Demo case</th><th scope="col">Coordination task</th><th scope="col">Facility</th><th scope="col">Due</th><th scope="col">Status</th></tr></thead>
+                    <tbody id="coordination-tbody"></tbody>
+                </table>
             </div>
         </section>
 
@@ -181,7 +215,7 @@
                     and follow-up workflow.
                 </p>
             </div>
-            <a href="referrals.html">Explore Smart Referral →</a>
+            <a href="patient-journey.html">Open Unified Patient Journey →</a>
         </section>
 
         <!-- Support -->
@@ -197,5 +231,8 @@
 </div>
 
 <script src="../assets/js/dashboard.js" defer></script>
+    <script src="../assets/js/referral-store.js" defer></script>
+    <script src="../assets/js/coordinator-overview.js" defer></script>
+    <script src="../assets/js/voice-assistant.js" defer></script>
 </body>
 </html>

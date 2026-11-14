@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel 2.0 | SwasthyaSetu AI</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/admin-panel.css">
+</head>
+<body class="admin-page">
+  <header class="admin-header">
+    <a href="../index.html">✚ SwasthyaSetu <b>AI</b></a>
+    <nav>
+      <a href="role-dashboard.html">My workspace</a>
+      <a href="ml-insights.html">AI Insights</a>
+      <a href="referrals.html">Smart Referral</a>
+      <button id="logoutBtn">Sign out</button>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-hero">
+      <p>ADMINISTRATOR WORKSPACE</p>
+      <h1>Admin Panel 2.0</h1>
+      <span>Manage demo accounts, allocate health workers, review AI operational summaries and platform activity.</span>
+      <div class="hero-actions">
+        <button type="button" id="seedDemoBtn" class="seed-btn">Seed demo data</button>
+        <small>Creates fictional journeys, events & referrals for live demos</small>
+      </div>
+    </section>
+
+    <p id="message" class="admin-message" role="status"></p>
+
+    <!-- Core stats -->
+    <section class="admin-stats" id="stats">
+      <article><strong>—</strong><span>Total accounts</span></article>
+      <article><strong>—</strong><span>Active workers</span></article>
+      <article><strong>—</strong><span>Demo journeys</span></article>
+      <article><strong>—</strong><span>Open referrals</span></article>
+    </section>
+
+    <!-- AI Operational Summary --> -->
+    <section class="admin-card ai-briefing" id="aiBriefing">
+      <div class="section-head">
+        <div>
+          <p>AI OPERATIONAL BRIEFING</p>
+          <h2>What needs attention</h2>
+        </div>
+        <span class="ai-badge">Rule-based summary · Synthetic data</span>
+      </div>
+      <div id="aiHeadline" class="ai-headline">Loading operational summary…</div>
+      <ul id="aiBullets" class="ai-bullets"></ul>
+      <p id="aiFairness" class="ai-fairness"></p>
+    </section>
+
+    <!-- Impact metrics -->
+    <section class="admin-card">
+      <div class="section-head">
+        <div>
+          <p>DEMO IMPACT</p>
+          <h2>Coordination snapshot</h2>
+        </div>
+      </div>
+      <div class="impact-grid" id="impactGrid">
+        <div class="impact-item"><strong>—</strong><span>Journeys created</span></div>
+        <div class="impact-item"><strong>—</strong><span>Referrals tracked</span></div>
+        <div class="impact-item"><strong>—</strong><span>Worker coverage</span></div>
+        <div class="impact-item"><strong>—</strong><span>Active staff</span></div>
+      </div>
+      <div id="roleDist" class="role-dist"></div>
+    </section>
+
+    <!-- User management -->
+    <section class="admin-card">
+      <div class="section-head">
+        <div>
+          <p>ACCOUNT CONTROL</p>
+          <h2>User management</h2>
+        </div>
+        <span>Role changes invalidate the old session</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name / Email</th><th>Role</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody id="usersBody">
+            <tr><td colspan="4">Loading accounts…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Worker assignment -->
+    <section class="admin-card">
+      <div class="section-head">
+        <div>
+          <p>CARE COORDINATION</p>
+          <h2>Health-worker assignment</h2>
+        </div>
+        <span>Only active health workers can be assigned</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Demo journey</th><th>Current stage</th><th>Assigned worker</th><th>Save</th></tr>
+          </thead>
+          <tbody id="journeysBody">
+            <tr><td colspan="4">Loading journeys…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Referral analytics -->
+    <section class="admin-card">
+      <div class="section-head">
+        <div>
+          <p>REFERRAL ANALYTICS</p>
+          <h2>Referral status overview</h2>
+        </div>
+      </div>
+      <div id="referralStats" class="referral-stats">Loading…</div>
+    </section>
+
+    <!-- Audit trail -->
+    <section class="admin-card">
+      <div class="section-head">
+        <div>
+          <p>AUDIT TRAIL</p>
+          <h2>Recent admin activity</h2>
+        </div>
+        <span>Latest 50 events</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>When</th><th>Actor</th><th>Action</th><th>Target</th><th>Details</th></tr>
+          </thead>
+          <tbody id="activityBody">
+            <tr><td colspan="5">Loading activity…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="admin-warning">
+      Demo only: all records must be fictional. This panel is not a production healthcare administration system.
+      Existing legacy modules may have separate access controls. AI summaries are generated from synthetic operational metrics only.
+    </p>
+  </main>
+
+  <script src="../assets/js/admin-panel.js" defer></script>
+  <script src="../assets/js/voice-assistant.js" defer></script>
+</body>
+</html>

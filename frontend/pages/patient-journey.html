@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unified Patient Journey | SwasthyaSetu AI</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/patient-journey.css">
+</head>
+<body class="journey-body">
+  <header class="journey-header">
+    <a href="dashboard.html" class="journey-brand">✚ SwasthyaSetu <b>AI</b></a>
+    <nav>
+      <a href="role-dashboard.html">My Workspace</a>
+      <a href="healthguard.html">HealthGuard</a>
+      <a href="maternalcare.html">MaternalCare</a>
+      <a href="medireach.html">MediReach</a>
+      <a href="referrals.html">Smart Referral</a>
+      <span id="currentRoleLabel" class="role-chip"></span>
+    </nav>
+  </header>
+
+  <main class="journey-wrap">
+    <section class="journey-hero">
+      <div>
+        <p class="eyebrow">CONNECTED CARE WORKFLOW · DEMO</p>
+        <h1>Unified Patient Journey</h1>
+        <p>Coordinate a fictional demo journey from registration through service navigation, referral and follow-up.</p>
+      </div>
+      <div class="hero-mark" aria-hidden="true">↗</div>
+    </section>
+
+    <div class="demo-alert" role="note">
+      <strong>Demo environment only.</strong> Use fictional names and contact details. Do not enter real patient or medical information. This prototype does not provide clinical decisions or confirm real appointments.
+    </div>
+
+    <section class="journey-grid">
+      <aside class="panel create-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">START A WORKFLOW</p><h2>Register demo patient</h2></div>
+          <span class="step-bubble">01</span>
+        </div>
+        <form id="patientForm">
+          <label>Fictional patient name <input id="patientName" name="name" required minlength="2" maxlength="80" placeholder="e.g. Demo Patient A"></label>
+          <div class="form-row">
+            <label>Age <input id="patientAge" name="age" type="number" min="0" max="120" placeholder="Optional"></label>
+            <label>Sex <select id="patientSex" name="sex"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></label>
+          </div>
+          <label>Fictional phone (optional) <input id="patientPhone" name="phone" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 digits"></label>
+          <label>Demo note (optional) <textarea id="patientNotes" name="notes" rows="3" maxlength="300" placeholder="Non-clinical workflow note only"></textarea></label>
+          <label class="consent-line"><input id="demoConfirm" type="checkbox" required> I confirm these are fictional demo details.</label>
+          <button class="btn btn-primary" type="submit">Create patient journey <span>→</span></button>
+        </form>
+        <p id="formMessage" class="message" role="status"></p>
+      </aside>
+
+      <section class="panel list-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">WORKSPACE</p><h2>Demo journeys</h2></div>
+          <button id="refreshBtn" class="btn btn-light" type="button">↻ Refresh</button>
+        </div>
+        <div class="stats-row">
+          <div><strong id="journeyTotal">0</strong><span>Total journeys</span></div>
+          <div><strong id="openReferralTotal">0</strong><span>Open referrals</span></div>
+        </div>
+        <div id="journeyList" class="journey-list" aria-live="polite">
+          <p class="empty-state">Loading demo journeys…</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="detailPanel" class="panel detail-panel" hidden>
+      <div class="detail-heading">
+        <div><p class="eyebrow">PATIENT WORKFLOW</p><h2 id="detailName">Journey details</h2><p id="detailMeta" class="muted"></p></div>
+        <div class="detail-actions"><span id="journeyId" class="id-chip"></span><button id="closeDetail" class="btn btn-light" type="button">Close</button></div>
+      </div>
+
+      <div class="journey-progress" id="journeyProgress"></div>
+
+      <p id="patientReadOnlyHint" class="demo-alert" hidden>Patient view: you can review your own demo journey. A Health Worker or Admin manages activity and referral updates.</p>
+      <div class="detail-columns">
+        <section>
+          <div class="subheading"><h3>Journey activity</h3><span class="muted">Append-only demo history</span></div>
+          <form id="eventForm" class="inline-form">
+            <label>Module / stage
+              <select id="eventStage">
+                <option>HealthGuard</option><option>MaternalCare</option><option>MediReach</option><option>Referral</option><option>Follow-up</option>
+              </select>
+            </label>
+            <label>Status
+              <select id="eventStatus"><option>Completed</option><option>In progress</option><option>Pending</option><option>Not applicable</option></select>
+            </label>
+            <label class="wide-field">Activity note <input id="eventNote" maxlength="300" placeholder="e.g. Opened the MediReach demo directory"></label>
+            <button class="btn btn-primary" type="submit">Add activity</button>
+          </form>
+          <div id="eventTimeline" class="event-timeline"></div>
+        </section>
+
+        <section>
+          <div class="subheading"><h3>Referral coordination</h3><span class="muted">Fictional records</span></div>
+          <form id="referralForm" class="referral-form">
+            <label>Facility name <input id="refFacility" required maxlength="120" placeholder="Demo Community Clinic"></label>
+            <label>Referral purpose <input id="refReason" required maxlength="250" placeholder="General consultation demo"></label>
+            <label>Demo appointment date <input id="refDate" type="date"></label>
+            <button class="btn btn-primary" type="submit">Create demo referral</button>
+          </form>
+          <div id="referralList" class="referral-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="journey-footer">SwasthyaSetu AI · Healthcare-support prototype · Synthetic/demo records only</footer>
+  </main>
+  <script src="../assets/js/patient-journey.js" defer></script>
+  <script src="../assets/js/voice-assistant.js" defer></script>
+</body>
+</html>

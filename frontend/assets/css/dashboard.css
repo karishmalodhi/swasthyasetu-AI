@@ -536,3 +536,33 @@
         font-size: 18px;
     }
 }
+
+.coordination-section {
+    margin-top: 42px;
+    padding: 25px;
+    border: 1px solid #e3ebef;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 26px rgba(16, 43, 70, .04);
+}
+.coordination-section .section-heading { margin-bottom: 8px; }
+.coordination-link { color: #087f83; font-size: 13px; font-weight: 800; white-space: nowrap; }
+.coordination-disclaimer { margin: 0 0 17px; color: #718394; font-size: 12px; }
+.coordination-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.coordination-stat { padding: 14px 15px; border-radius: 11px; background: #f4f8fa; border: 1px solid #e8eff2; }
+.coordination-stat span,.coordination-stat strong { display: block; }
+.coordination-stat span { color: #718394; font-size: 11px; }
+.coordination-stat strong { margin-top: 5px; color: #102b46; font-size: 23px; }
+.coordination-table-wrap { overflow-x: auto; }
+.coordination-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; }
+.coordination-table th { padding: 10px 9px; color: #718394; border-bottom: 1px solid #e3ebef; font-size: 10px; letter-spacing: .5px; text-transform: uppercase; }
+.coordination-table td { padding: 12px 9px; color: #304b60; border-bottom: 1px solid #eff3f5; }
+.coordination-table tbody tr:last-child td { border-bottom: 0; }
+.coordination-table .is-overdue { color: #b54732; font-weight: 750; }
+.coordination-badge { display: inline-block; padding: 4px 8px; border-radius: 999px; background: #eef2f5; color: #526777; font-size: 10px; font-weight: 750; white-space: nowrap; }
+.coordination-badge.status-new { background: #fff2db; color: #815516; }
+.coordination-badge.status-referred { background: #e8efff; color: #3e5b9a; }
+.coordination-badge.status-appointment-scheduled { background: #e8f5f4; color: #146a69; }
+.coordination-badge.status-follow-up-complete { background: #e8f4eb; color: #23653a; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 750px) { .coordination-section { padding: 18px 14px; } .coordination-stats { grid-template-columns: repeat(2, 1fr); } .coordination-link { white-space: normal; text-align: right; } }

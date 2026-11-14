@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Insights | SwasthyaSetu AI</title>
+  <link rel="stylesheet" href="../assets/css/ml-insights.css">
+  <script src="../assets/js/ml-insights.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">+</span> SwasthyaSetu AI</a>
+    <nav aria-label="Main navigation">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="patient-journey.html">Patient Journey</a>
+      <a href="role-dashboard.html">My Workspace</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <span class="eyebrow">EXPLAINABLE AI • SYNTHETIC DATA ONLY</span>
+      <h1>Care Coordination AI Insights</h1>
+      <p>Explore an explainable model that prioritises fictional follow-up cases using operational signals — not clinical risk.</p>
+    </section>
+
+    <aside class="safety" role="note">
+      <strong>Important:</strong> All patients and training data are synthetic. This demo does not predict disease, pregnancy complications, or patient safety. Never enter real patient information.
+    </aside>
+
+    <section class="model-summary" aria-labelledby="modelTitle">
+      <div><span class="label">MODEL</span><strong id="modelTitle">Loading…</strong></div>
+      <div><span class="label">TRAINING EXAMPLES</span><strong id="trainingCount">—</strong></div>
+      <div><span class="label">ENGINE</span><strong id="engineBadge">—</strong></div>
+    </section>
+
+    <!-- Feature importance -->
+    <section class="panel" aria-labelledby="importanceTitle">
+      <div class="panel-heading">
+        <div><span class="eyebrow">GLOBAL EXPLAINABILITY</span><h2 id="importanceTitle">Feature importance</h2></div>
+        <p>Which operational signals most influence the coordination-load score across the synthetic training set.</p>
+      </div>
+      <div id="importanceBars" class="importance-bars">Loading feature importance…</div>
+    </section>
+
+    <!-- Interactive predictor -->
+    <section class="panel predictor" aria-labelledby="predictTitle">
+      <div class="panel-heading">
+        <div><span class="eyebrow">TRY A SYNTHETIC CASE</span><h2 id="predictTitle">Live prediction sandbox</h2></div>
+        <p>All fields are coordination metadata — not symptoms or clinical measurements.</p>
+      </div>
+      <form id="predictForm" class="predict-form">
+        <label>Days since last contact
+          <input name="days_since_last_contact" type="number" min="0" max="90" value="35" required>
+        </label>
+        <label>Missed appointments (90 days)
+          <input name="missed_appointments_90d" type="number" min="0" max="5" value="1" required>
+        </label>
+        <label>Open follow-up tasks
+          <input name="open_follow_up_tasks" type="number" min="0" max="5" value="2" required>
+        </label>
+        <label>Days in current stage
+          <input name="days_in_current_stage" type="number" min="0" max="60" value="14" required>
+        </label>
+        <label>Previous escalations
+          <input name="previous_escalations" type="number" min="0" max="3" value="0" required>
+        </label>
+        <button type="submit">Run AI prediction</button>
+      </form>
+
+      <div id="predictionResult" class="prediction-result" aria-live="polite">
+        Enter synthetic scheduling signals and run the model to see the score, category, suggested action and feature contributions.
+      </div>
+    </section>
+
+    <!-- Demo patient cards -->
+    <section class="panel" aria-labelledby="historyTitle">
+      <div class="panel-heading">
+        <div><span class="eyebrow">FICTIONAL RECORDS</span><h2 id="historyTitle">Demo patient histories</h2></div>
+        <p>IDs, names and histories below are fabricated for the demo.</p>
+      </div>
+      <div id="patientGrid" class="patient-grid" aria-live="polite"><p>Loading synthetic records…</p></div>
+    </section>
+
+    <section class="method panel">
+      <h2>How this AI demo works</h2>
+      <ol>
+        <li>A reproducible set of synthetic operational examples is generated in code.</li>
+        <li>An explainable ensemble (Random Forest when scikit-learn is available, pure-Python fallback otherwise) learns a coordination-load index.</li>
+        <li>At prediction time the model returns the score, a priority category, a suggested next action, and per-feature contributions.</li>
+        <li>The model only uses operational signals (contact gaps, missed visits, open tasks, stage duration, prior escalations). It never uses clinical measurements.</li>
+      </ol>
+      <p>The displayed index and category are outputs from an invented synthetic target — not calibrated probabilities or care recommendations. A production system would require authorised data, clinician-defined targets, privacy controls, bias evaluation and prospective validation.</p>
+    </section>
+  </main>
+
+  <footer>Hackathon prototype · Synthetic data only · Not for clinical use · LLM-ready assistant available</footer>
+  <script src="../assets/js/voice-assistant.js" defer></script>
+</body>
+</html>
